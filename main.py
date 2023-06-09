@@ -20,8 +20,12 @@ login_manager.init_app(app)
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    print(1)
     return render_template('index.html')
+
+
+@app.route("/index_after_enter", methods=["GET", "POST"])
+def index_after_enter():
+    return render_template('index_after_enter.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
