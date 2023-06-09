@@ -1,0 +1,47 @@
+@font-face {
+    src: url("../fonts/Raleway-Light.ttf") format('truetype');
+    font-family: Raleway-300;
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    src: url("../fonts/Raleway-Regular.ttf") format('truetype');
+    font-family: Raleway-400;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    src: url("../fonts/Raleway-Medium.ttf") format('truetype');
+    font-family: Raleway-500;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    src: url("https://amanat918.kz/fonts/Raleway-Semibold.ttf") format('truetype');
+    font-family: Raleway-600;
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    src: url("../fonts/Raleway-Bold.ttf") format('truetype');
+    font-family: Raleway-700;
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    src: url("../fonts/Lato-Bold.ttf") format('truetype');
+    font-family: Lato-700;
+    font-style: normal;
+    font-weight: 700;
+}
+@font-face {
+    src: url("../fonts/Lato-Regular.ttf") format('truetype');
+    font-family: Lato-400;
+    font-style: normal;
+    font-weight: 400;
+}

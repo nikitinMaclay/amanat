@@ -1,0 +1,67 @@
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.pagination .next,
+.pagination .page-number,
+.pagination .prev {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+}
+
+.pagination .prev {
+    margin-right: 20px
+}
+
+.pagination .next {
+    margin-left: 20px
+}
+
+.pagination .next:hover, .pagination .prev:hover {
+    background: #2A64D6FF;
+}
+
+.pagination .next:hover svg path, .pagination .prev:hover svg path {
+    fill: #fff
+}
+
+.pagination .page-numbers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap
+}
+
+.pagination .page-numbers .active {
+    background: #2A64D6FF !important;
+    color: #fff !important
+}
+
+.pagination .page-numbers .page-number {
+    background: transparent;
+    border: 1px solid #2A64D6FF;
+    color: #2A64D6FF;
+    font-family: Raleway-400, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-right: 8px
+}
+
+.pagination .page-numbers .page-number:hover {
+    background: #1949A5FF;
+    color: #fff
+}
+
+.pagination .page-numbers .page-number:last-child {
+    margin-right: unset
+}

@@ -1,0 +1,291 @@
+$('#navbarSupportedContent').on('show.bs.collapse', function () {
+    $('body').css('overflow-y', 'hidden')
+})
+
+$('#navbarSupportedContent').on('hide.bs.collapse', function () {
+    $('body').css('overflow-y', 'auto')
+})
+
+function openLoginModal() {
+    $('.modal').modal('hide')
+    $('#loginModal').modal('show')
+}
+function openRegisterModal() {
+    $('.modal').modal('hide')
+    // $('#registerModal').modal('show')
+    // $('#smsVerificationModal').modal('show')
+    $('#registerSecondModal').modal('show')
+}
+
+function openSmsVerificationModal() {
+    $('.modal').modal('hide')
+    $('#smsVerificationModal').modal('show')
+}
+
+function openRegisterSecondModal() {
+    $('.modal').modal('hide')
+    $('#registerSecondModal').modal('show')
+}
+
+$('.phone').mask("89999999999");
+
+function alertModal(text = "", timer = 3500) {
+    Swal.fire({
+        title: text ? text : "Сәтті өзгертілді!",
+        padding: '2em',
+        icon: 'success',
+        // iconHtml: '<div class="svgSuccessContainer" id="svgSuccessContainer"></div>',
+        // customClass: {
+        //     icon: 'no-border'
+        // },
+        showConfirmButton: false,
+        timer: timer,
+        showCloseButton: true,
+    })
+}
+
+function alertErrorModal(text = "") {
+    Swal.fire({
+        title: text ? text : "Қате!",
+        padding: '2em',
+        icon: 'error',
+        iconHtml: '<div class="svgErrorContainer" id="svgErrorContainer"></div>',
+        customClass: {
+            icon: 'no-border'
+        },
+        showConfirmButton: false,
+        showCloseButton: true,
+    })
+}
+
+function alertWarningModal(text = "") {
+    Swal.fire({
+        text: text ? `${text}` : "Қате!",
+        padding: '2em',
+        icon: 'warning',
+        showConfirmButton: true,
+        showCloseButton: true,
+    })
+}
+
+$('.sidebar-item').hover(function () {
+    $(this).prev().addClass('border-hidden');
+}, function () {
+    $('.sidebar-item').removeClass('border-hidden');
+});
+
+if ($('.sidebar-item').hasClass('active')) {
+    $('.sidebar-item.active').prev().addClass('active-border-hidden');
+}
+
+
+// function change_file_input(el, number) {
+//     let file_n = ''
+//
+//     $(el).each(function () {
+//         let fileName = $(this).val().split('/').pop().split('\\').pop();
+//         file_n = fileName
+//     })
+//
+//     let re = /(\.jpg|\.jpeg|\.png|\.doc|\.docx|\.pdf|\.txt|\.xls|\.xlsx)$/i;
+//
+//
+//     // let parent = $(el).closest('form')
+//     let parent = $('.task-file')
+//
+//     if (!re.exec(file_n)) {
+//         parent.find('.input-file' + number + ' p').text('Выбран неверный формат файла ').css('color', '#981323')
+//     } else {
+//         parent.find('.input-file' + number + ' p').text('Файл выбран ').css('color', '#4AAF30')
+//         parent.find('.input-file' + number).css('border-color', '#4AAF30')
+//     }
+//
+//     console.log(!re.exec(file_n))
+// }
+
+function change_file_input(el, number) {
+    let file_n = ''
+
+    $(el).each(function () {
+        let fileName = $(this).val().split('/').pop().split('\\').pop();
+        file_n = fileName
+    })
+
+    let re = /(\.jpg|\.jpeg|\.png|\.doc|\.docx|\.pdf|\.svg|\.xls|\.xlsx)$/i;
+
+    let parent = $(el).closest('form')
+
+    if (!re.exec(file_n)) {
+        if (file_n) {
+            parent.find('.input_file_' + number + ' span.text').text('Қате пішіміді файл ').css('color', '#FA4343')
+            parent.find('.input_file_' + number).css('border-color', '#FA4343')
+        } else {
+            parent.find('.input_file_' + number + ' span.text').text('Файл жүктеу').css('color', '#FA4343')
+            parent.find('.input_file_' + number).css('border-color', '#FA4343')
+        }
+    } else {
+        parent.find('.input_file_' + number).css('display', 'none')
+        parent.find('.input_file_' + number + '_uploaded').css('display', 'block')
+        parent.find('.input_file_' + number + '_uploaded span.text').text(file_n)
+    }
+}
+
+function deleteInputFile(el, num) {
+    $('#input_file_' + num).val("")
+    let parent = $(el).closest('form')
+    parent.find('.input_file_' + num + ' span.text').text('Файл жүктеу ').css('color', '#2A64D6')
+    parent.find('.input_file_' + num).css('border-color', '#C4C4C4')
+    parent.find('.input_file_' + num).css('display', 'flex')
+    parent.find('.input_file_' + num + '_uploaded').css('display', 'none')
+    parent.find('.input_file_' + num + '_uploaded .text').text('')
+}
+
+function enableDisableRegisterButton() {
+    let confirmRules = document.getElementById(`confirm_policy`)
+    let registerButton = document.getElementById(`register-btn`)
+
+    if (confirmRules.checked) {
+        return registerButton.disabled = false
+    } else {
+        return registerButton.disabled = true
+    }
+}
+
+$(document).ready(function () {
+    $(".tabs").click(function () {
+        $(".tabs").removeClass("active");
+        $(this).addClass("active");
+
+        let current_fs = $(".active");
+        let next_fs = $(this).attr('id');
+        next_fs = "#" + next_fs + "1";
+
+        $("fieldset").removeClass("show");
+        $(next_fs).addClass("show");
+
+        current_fs.animate({}, {
+            step: function () {
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({
+                    'display': 'block'
+                });
+            }
+        });
+    });
+});
+
+function clearInvalidFeedback() {
+    $(".invalid-feedback").css("display", 'none');
+    $(".invalid-feedback").text("");
+    $(".is-invalid").removeClass('is-invalid');
+}
+
+function openUserResetPassword() {
+    $('#myModal').modal('hide');
+
+    setTimeout(() => {
+        $('#userResetPasswordModal').modal('show');
+    }, 500)
+}
+
+function closeModal(e) {
+    $(".container-modal").removeClass("show");
+    return $(e).closest('.container-modal').removeClass('show');
+}
+
+$(function () {
+    $("#registerSecondForm").submit(function (e) {
+        e.preventDefault();
+
+        let phone = $("#register-phone").val();
+        let fullName = $(this).find("#register-full_name").val();
+        let city_id = $("#register-city_id").val();
+        let password = $(this).find("#register-password").val();
+        let _token = $('meta[name="csrf-token"]').attr('content');
+
+        $(".loader").addClass("loading");
+        clearInvalidFeedback()
+
+        $.ajax({
+            url: $(this).attr('action'),
+            method: $(this).attr('method'),
+            type: "POST",
+            data: {
+                '_token': _token,
+                'full_name': fullName,
+                'phone': phone,
+                'city_id': city_id,
+                'password': password,
+            },
+            success: function (res) {
+                $(".loader").removeClass("loading");
+
+                if (res && res.data.success) {
+                    alertModal('Вы успешно зарегистрировались!');
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1500)
+                }
+            },
+            error: function (err) {
+                $(".loader").removeClass("loading");
+
+                let response_text = JSON.parse(err.responseText);
+
+                if (response_text.errors && typeof response_text.errors == 'object') {
+                    Object.entries(response_text.errors).forEach(([key, value]) => {
+                        $('#error-register-' + key).text(value[0]);
+                        $('#error-register-' + key).css('display', 'block');
+                        $('#register-' + key).addClass('is-invalid');
+                    })
+                }
+            }
+        });
+    });
+
+    $('#loginForm').submit(function (e) {
+        e.preventDefault();
+
+        let phone = $(this).find("#login-phone").val();
+        let password = $(this).find('#login-password').val();
+        let _token = $('meta[name="csrf-token"]').attr('content');
+        $(".loader").addClass("loading");
+
+        clearInvalidFeedback()
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: "GET",
+            data: {
+                'phone': phone,
+                'password': password,
+                '_token': _token
+            },
+            success: function (res) {
+                $(".loader").removeClass("loading");
+                if (res.data && res.data.success) {
+                    window.location.reload();
+                }
+            },
+            error: function (err) {
+                console.log(err)
+
+                $(".loader").removeClass("loading");
+
+                let response_text = JSON.parse(err.responseText);
+                if (response_text.errors && typeof response_text.errors == 'object') {
+                    Object.entries(response_text.errors).forEach(([key, value]) => {
+                        $('#error-login-' + key).text(value[0]);
+                        $('#error-login-' + key).css('display', 'block');
+                        $('#login-' + key).addClass('is-invalid');
+                    })
+                }
+            }
+        });
+    });
+});
+
+

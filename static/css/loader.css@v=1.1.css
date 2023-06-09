@@ -1,0 +1,73 @@
+
+/* Turn off scrollbar when body element has the loading class */
+body.loading {
+    overflow: hidden;
+}
+
+/* Make spinner image visible when body element has the loading class */
+body.loading .overlay {
+    display: block;
+}
+
+
+.vld-shown {
+    overflow: hidden;
+}
+
+.overlay {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.overlay.is-active {
+    display: flex;
+}
+
+.overlay.is-full-page {
+    z-index: 9999;
+    position: fixed;
+}
+
+.loader {
+    display: none;
+}
+
+.vld-background {
+    backdrop-filter: blur(2px);
+}
+
+.overlay .vld-background {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0.5;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.overlay .vld-icon, .vld-parent {
+    position: relative;
+}
+
+.loading {
+    display: block !important;
+    z-index: 9999999999;
+    position: fixed;
+}
+.vld-icon svg {
+    width: 100px;
+}
+@media (max-width: 767.98px) {
+    .vld-icon svg {
+        width: 65px;
+    }
+}

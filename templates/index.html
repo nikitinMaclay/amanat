@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Amanat918 cargo</title>
+
+    <!-- Csrf token -->
+    <meta name="csrf-token" content="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../static/css/fonts.css@v=1.2.css"/>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/css/loader.css@v=1.1.css">
+    <link rel="stylesheet" href="../static/plugins/sweetalert2/sweetalert2.css@v=1.1.css">
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css"/>
+    <style>
+        .plyr--video {
+            background: rgba(0, 0, 0, .5);
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .plyr__control--overlaid {
+            background: #2A64D6;
+            padding: 20px;
+        }
+
+        .plyr--video .plyr__control.plyr__tab-focus,
+        .plyr--video .plyr__control[aria-expanded=true] {
+            background: rgba(255, 255, 255, 0.4);
+            color: #2A64D6;
+        }
+
+        .plyr--video .plyr__control:hover {
+            background: rgba(42, 100, 214, 0.8);
+            color: #fff;
+        }
+
+        .plyr__control.plyr__tab-focus {
+            box-shadow: none;
+            outline: 0;
+        }
+
+        .plyr--video {
+            border-radius: 6px !important;
+        }
+
+        .plyr__video-wrapper.plyr__video-embed {
+            height: auto;
+        }
+
+        .video-title {
+            font-size: 24px;
+        }
+
+        @media (max-width: 576px) {
+            .video-title {
+                font-size: 18px;
+            }
+
+            .col-full {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            .plyr__control--overlaid {
+                padding: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../static/css/style.css@v=2.6.css"/>
+    <link rel="stylesheet" href="../static/css/pagination.css@v=1.4.css"/>
+    <link rel="stylesheet" href="../static/css/footer.css@v=1.3.css"/>
+    <link rel="stylesheet" href="../static/css/media.css@v=2.4.css"/>
+
+    <link rel="apple-touch-icon" href="../static/images/favicon-mobile.jpg">
+    <link rel="icon" type="image" href="../static/images/favicon-mobile.jpg">
+
+    <style >[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+</head>
+
+<body class="wrap d-flex flex-column min-vh-100">
+
+<div class="overflow"></div>
+<div class="loader">
+    <div tabindex="0" aria-label="Loading" class="overlay is-active is-full-page" aria-busy="true">
+        <div class="vld-background"></div>
+        <div class="vld-icon">
+
+            <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" width="64" height="64" stroke="#fff">
+                <g fill="none" fill-rule="evenodd">
+                    <g transform="translate(1 1)" stroke-width="2">
+                        <circle stroke-opacity=".25" cx="18" cy="18" r="18"></circle>
+                        <path d="M36 18c0-9.94-8.06-18-18-18">
+                            <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18"
+                                              dur="0.8s" repeatCount="indefinite"></animateTransform>
+                        </path>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div class="flex-fill">
+    <header class="header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">
+                <img class="navbar-brand-mobile" src="images/maksat-mobile-logo.png" alt="">
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <div class="line-row">
+                        <a href="address.html" class="row-link">
+                            Склад адресі
+                        </a>
+                        <a href="questions.html" class="row-link">
+                            Сұрақ жауап
+                        </a>
+                    </div>
+                            </div>
+
+                            <div class="mobile-line-row">
+                    <a href="index.html" class="row-link">
+                        <img src="images/icons/user-icon.svg" alt="">
+                    </a>
+                </div>
+                    </nav>
+    </div>
+</header>
+
+    <div class="content-wrapper">
+            <section class="section section-index">
+        <div class="container">
+
+            
+            <div class="row">
+                                    <div class="col-12 col-lg-5 mb-4 mb-lg-0">
+
+                        <img class="main-page-logo main-page-quest-logo mb-5"
+                             src="images/amanat918-cargo.svg" alt="">
+
+                        <div class="services">
+                            <div class="service-item">
+                                <img class="service-item-image" src="images/icons/service-icon.svg"
+                                     alt="">
+                                Төмен тарифтер
+                            </div>
+                            <div class="service-item">
+                                <img class="service-item-image" src="images/icons/service-icon.svg"
+                                     alt="">
+                                Жылдам карго
+                            </div>
+                            <div class="service-item">
+                                <img class="service-item-image" src="images/icons/service-icon.svg"
+                                     alt="">
+                                Кауіпсіз жеткізулер
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <div class="auth-block">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home"
+                                            type="button" role="tab" aria-controls="home" aria-selected="true">
+                                        Кабинетке кіру
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile"
+                                            type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                        Сайтқа тіркелу
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <form id="loginForm" class="login-form" action="https://amanat918.kz/ajax/login"
+                                          method="GET" autocomplete="off">
+                                        <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">                                        <div class="form-group">
+                                            <input type="tel" inputmode="numeric" class="form-control phone"
+                                                   id="login-phone" autocomplete="phone"
+                                                   aria-describedby="error-login-phone" placeholder="8___________"
+                                                   name="phone">
+                                            <div id="error-login-phone" class="invalid-feedback"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="login-password"
+                                                   name="password"
+                                                   aria-describedby="error-login-password" placeholder="Құпия сөз"
+                                                   autocomplete="password">
+                                            <div id="error-login-password" class="invalid-feedback"></div>
+                                        </div>
+                                        <button type="submit" class="btn btn-default btn-login">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.7334 12.1833L11.8667 10.05L9.7334 7.91667" stroke="white"
+                                                      stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M3.3335 10.05H11.8085" stroke="white" stroke-width="1.5"
+                                                      stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path
+                                                    d="M10 3.33333C13.6833 3.33333 16.6667 5.83333 16.6667 10C16.6667 14.1667 13.6833 16.6667 10 16.6667"
+                                                    stroke="white" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+
+                                            Кабинетке кіру
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <form id="registerSecondForm" class="login-form" autocomplete="off"
+                                          action="https://amanat918.kz/ajax/register" method="POST">
+                                        <input type="hidden" name="_method" value="POST">                                        <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">
+                                        <div class="form-group">
+                                            <input type="tel" inputmode="numeric" class="form-control phone"
+                                                   id="register-phone" maxlength="100"
+                                                   aria-describedby="error-register-phone" placeholder="8___________"
+                                                   name="phone">
+                                            <div id="error-register-phone" class="invalid-feedback"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input name="full_name" type="text" class="form-control" maxlength="100"
+                                                   id="register-full_name" aria-describedby="error-register-full_name"
+                                                   placeholder="Имя на английском" required pattern="^[A-Za-z0-9]+$">
+                                            <div id="error-register-full_name" class="invalid-feedback"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <select id="register-city_id" class="form-control" name="register-city"
+                                                    required>
+                                                <option>Қалаңыз</option>
+                                                                                                    <option value="1">Алматы</option>
+                                                                                                    <option value="2">Шымкент</option>
+                                                                                                    <option value="3">Астана</option>
+                                                                                                    <option value="4">Ақтөбе</option>
+                                                                                                    <option value="5">Қарағанды</option>
+                                                                                                    <option value="6">Тараз (Жамбыл)</option>
+                                                                                                    <option value="7">Павлодар</option>
+                                                                                                    <option value="8">Атырау</option>
+                                                                                                    <option value="9">Өскемен</option>
+                                                                                                    <option value="10">Семей</option>
+                                                                                                    <option value="11">Орал</option>
+                                                                                                    <option value="12">Қызылорда</option>
+                                                                                                    <option value="13">Қостанай</option>
+                                                                                                    <option value="14">Петропавл</option>
+                                                                                                    <option value="15">Ақтау</option>
+                                                                                                    <option value="16">Түркістан</option>
+                                                                                                    <option value="17">Көкшетау</option>
+                                                                                                    <option value="18">Жезқазған</option>
+                                                                                                    <option value="19">Талдықорған</option>
+                                                                                                    <option value="20">Жаңаөзен</option>
+                                                                                                    <option value="21">Қонаев (Қапшағай)</option>
+                                                                                                    <option value="22">Жаркент</option>
+                                                                                                    <option value="23">Балқаш</option>
+                                                                                                    <option value="24">Екібастұз</option>
+                                                                                                    <option value="25">Зайсан</option>
+                                                                                                    <option value="26">Сәтбаев</option>
+                                                                                                    <option value="29">Кеген</option>
+                                                                                                    <option value="30">Есік</option>
+                                                                                                    <option value="31">Шу</option>
+                                                                                                    <option value="32">Сарыөзек</option>
+                                                                                                    <option value="33">Жетісай</option>
+                                                                                                    <option value="34">Сарыағаш</option>
+                                                                                            </select>
+                                            <div id="error-register-city_id" class="invalid-feedback"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input name="password" type="password" class="form-control"
+                                                   id="register-password" aria-describedby="error-register-password"
+                                                   placeholder="Құпия сөз" required>
+                                            <div id="error-register-password" class="invalid-feedback"></div>
+                                        </div>
+                                        <button type="submit" class="btn btn-default btn-register">
+                                            <svg class="mr-1" width="21" height="20" viewBox="0 0 21 20" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10.5002 10C12.8013 10 14.6668 8.13454 14.6668 5.83335C14.6668 3.53217 12.8013 1.66669 10.5002 1.66669C8.19898 1.66669 6.3335 3.53217 6.3335 5.83335C6.3335 8.13454 8.19898 10 10.5002 10Z"
+                                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                                <path
+                                                    d="M3.3418 18.3333C3.3418 15.1083 6.55013 12.5 10.5001 12.5C11.3001 12.5 12.0751 12.6083 12.8001 12.8083"
+                                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                                <path
+                                                    d="M18.8332 15C18.8332 15.2667 18.7998 15.525 18.7332 15.775C18.6582 16.1083 18.5248 16.4334 18.3498 16.7167C17.7748 17.6834 16.7165 18.3334 15.4998 18.3334C14.6415 18.3334 13.8665 18.0083 13.2832 17.475C13.0332 17.2583 12.8165 17 12.6498 16.7167C12.3415 16.2167 12.1665 15.625 12.1665 15C12.1665 14.1 12.5248 13.275 13.1082 12.675C13.7165 12.05 14.5665 11.6667 15.4998 11.6667C16.4832 11.6667 17.3748 12.0917 17.9748 12.775C18.5082 13.3667 18.8332 14.15 18.8332 15Z"
+                                                    stroke="white" stroke-width="1.5" stroke-miterlimit="10"
+                                                    stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M16.7416 14.9833H14.2583" stroke="white" stroke-width="1.5"
+                                                      stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M15.5 13.7667V16.2583" stroke="white" stroke-width="1.5"
+                                                      stroke-miterlimit="10" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+
+                                            Тіркелу
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+
+        </div>
+    </section>
+
+    <section class="section section-second">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="payment-title mb-3 text-center video-title">Сайтқа тіркелу түсіндірмесі</h3>
+
+                    <div class="plyr__video-embed" id="player">
+                        <iframe width="100%" src="https://www.youtube.com/embed/ooRzooXvDbs"
+                                title="Амана каргосы сайтына тіркелу видеосы✅" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+
+                                            <div class="payment">
+                            
+                            
+                            
+                            <div class="payment-info">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div class="payment-text" style="text-align: center">
+                                    
+                                    
+                                    Қытай складының адресін, тегін кодты алу үшін төмендегі кнопканы басыңыз
+                                </div>
+                                <a href="https://api.whatsapp.com/send?phone=77770643011&text=Сәлеметсізбе! Тегін код алғым келеді"
+                                   class="btn btn-default btn-payment " style="margin: 0 auto">
+                                    Тегін код аламын
+                                    
+                                    <svg class="ml-1" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.40476 15.5264L8.93476 20.0564C10.7948 21.9164 13.8148 21.9164 15.6848 20.0564L20.0748 15.6664C21.9348 13.8064 21.9348 10.7864 20.0748 8.91637L15.5348 4.39637C14.5848 3.44637 13.2748 2.93637 11.9348 3.00637L6.93476 3.24637C4.93476 3.33637 3.34476 4.92637 3.24476 6.91637L3.00476 11.9164C2.94476 13.2664 3.45476 14.5764 4.40476 15.5264Z"
+                                            stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"/>
+                                        <path
+                                            d="M9.73486 12.2263C11.1156 12.2263 12.2349 11.107 12.2349 9.72632C12.2349 8.34561 11.1156 7.22632 9.73486 7.22632C8.35415 7.22632 7.23486 8.34561 7.23486 9.72632C7.23486 11.107 8.35415 12.2263 9.73486 12.2263Z"
+                                            stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                        <path d="M13.2349 17.2263L17.2349 13.2263" stroke="white" stroke-width="1.5"
+                                              stroke-miterlimit="10" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+
+        </div>
+    </section>
+    </div>
+</div>
+
+<nav class="tab-bar">
+    <div class="container-fluid">
+        <ul class="tab-bar-menu">
+                            <li>
+                    <a href="index.html" class=" active ">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20.0402 6.82L14.2802 2.79C12.7102 1.69 10.3002 1.75 8.79023 2.92L3.78023 6.83C2.78023 7.61 1.99023 9.21 1.99023 10.47V17.37C1.99023 19.92 4.06023 22 6.61023 22H17.3902C19.9402 22 22.0102 19.93 22.0102 17.38V10.6C22.0102 9.25 21.1402 7.59 20.0402 6.82ZM12.7502 18C12.7502 18.41 12.4102 18.75 12.0002 18.75C11.5902 18.75 11.2502 18.41 11.2502 18V15C11.2502 14.59 11.5902 14.25 12.0002 14.25C12.4102 14.25 12.7502 14.59 12.7502 15V18Z"
+                                fill="#C4D1EB"/>
+                        </svg>
+                        Басты бет
+                    </a>
+                </li>
+                <li>
+                    <a href="address.html" class="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.6201 8.45C19.5701 3.83 15.5401 1.75 12.0001 1.75C12.0001 1.75 12.0001 1.75 11.9901 1.75C8.4601 1.75 4.4201 3.82 3.3701 8.44C2.2001 13.6 5.3601 17.97 8.2201 20.72C9.2801 21.74 10.6401 22.25 12.0001 22.25C13.3601 22.25 14.7201 21.74 15.7701 20.72C18.6301 17.97 21.7901 13.61 20.6201 8.45ZM12.0001 13.46C10.2601 13.46 8.8501 12.05 8.8501 10.31C8.8501 8.57 10.2601 7.16 12.0001 7.16C13.7401 7.16 15.1501 8.57 15.1501 10.31C15.1501 12.05 13.7401 13.46 12.0001 13.46Z" fill="#C4D1EB"/>
+                        </svg>
+
+                        Склад
+                    </a>
+                </li>
+                <li>
+                    <a href="questions.html" class="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 2.42999H7C4 2.42999 2 4.42999 2 7.42999V13.43C2 16.43 4 18.43 7 18.43V20.56C7 21.36 7.89 21.84 8.55 21.39L13 18.43H17C20 18.43 22 16.43 22 13.43V7.42999C22 4.42999 20 2.42999 17 2.42999ZM12 14.6C11.58 14.6 11.25 14.26 11.25 13.85C11.25 13.44 11.58 13.1 12 13.1C12.42 13.1 12.75 13.44 12.75 13.85C12.75 14.26 12.42 14.6 12 14.6ZM13.26 10.45C12.87 10.71 12.75 10.88 12.75 11.16V11.37C12.75 11.78 12.41 12.12 12 12.12C11.59 12.12 11.25 11.78 11.25 11.37V11.16C11.25 9.99999 12.1 9.42999 12.42 9.20999C12.79 8.95999 12.91 8.78999 12.91 8.52999C12.91 8.02999 12.5 7.61999 12 7.61999C11.5 7.61999 11.09 8.02999 11.09 8.52999C11.09 8.93999 10.75 9.27999 10.34 9.27999C9.93 9.27999 9.59 8.93999 9.59 8.52999C9.59 7.19999 10.67 6.11999 12 6.11999C13.33 6.11999 14.41 7.19999 14.41 8.52999C14.41 9.66999 13.57 10.24 13.26 10.45Z" fill="#C4D1EB"/>
+                        </svg>
+
+                        Сұрақ жауап
+                    </a>
+                </li>
+                <li>
+                    <a href="my/parcels.html" class="">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.2102 7.82L12.5102 12.28C12.2002 12.46 11.8102 12.46 11.4902 12.28L3.79021 7.82C3.24021 7.5 3.10021 6.75 3.52021 6.28C3.81021 5.95 4.14021 5.68 4.49021 5.49L9.91021 2.49C11.0702 1.84 12.9502 1.84 14.1102 2.49L19.5302 5.49C19.8802 5.68 20.2102 5.96 20.5002 6.28C20.9002 6.75 20.7602 7.5 20.2102 7.82Z" fill="#C4D1EB"/>
+                            <path d="M11.43 14.14V20.96C11.43 21.72 10.66 22.22 9.97998 21.89C7.91998 20.88 4.44998 18.99 4.44998 18.99C3.22998 18.3 2.22998 16.56 2.22998 15.13V9.97C2.22998 9.18 3.05998 8.68 3.73998 9.07L10.93 13.24C11.23 13.43 11.43 13.77 11.43 14.14Z" fill="#C4D1EB"/>
+                            <path d="M12.5698 14.14V20.96C12.5698 21.72 13.3398 22.22 14.0198 21.89C16.0798 20.88 19.5498 18.99 19.5498 18.99C20.7698 18.3 21.7698 16.56 21.7698 15.13V9.97C21.7698 9.18 20.9398 8.68 20.2598 9.07L13.0698 13.24C12.7698 13.43 12.5698 13.77 12.5698 14.14Z" fill="#C4D1EB"/>
+                        </svg>
+
+                        Тауарлар
+                    </a>
+                </li>
+                <li>
+                    <a href="cabinet.html">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 12C22 6.49 17.51 2 12 2C6.49 2 2 6.49 2 12C2 14.9 3.25 17.51 5.23 19.34C5.23 19.35 5.23 19.35 5.22 19.36C5.32 19.46 5.44 19.54 5.54 19.63C5.6 19.68 5.65 19.73 5.71 19.77C5.89 19.92 6.09 20.06 6.28 20.2C6.35 20.25 6.41 20.29 6.48 20.34C6.67 20.47 6.87 20.59 7.08 20.7C7.15 20.74 7.23 20.79 7.3 20.83C7.5 20.94 7.71 21.04 7.93 21.13C8.01 21.17 8.09 21.21 8.17 21.24C8.39 21.33 8.61 21.41 8.83 21.48C8.91 21.51 8.99 21.54 9.07 21.56C9.31 21.63 9.55 21.69 9.79 21.75C9.86 21.77 9.93 21.79 10.01 21.8C10.29 21.86 10.57 21.9 10.86 21.93C10.9 21.93 10.94 21.94 10.98 21.95C11.32 21.98 11.66 22 12 22C12.34 22 12.68 21.98 13.01 21.95C13.05 21.95 13.09 21.94 13.13 21.93C13.42 21.9 13.7 21.86 13.98 21.8C14.05 21.79 14.12 21.76 14.2 21.75C14.44 21.69 14.69 21.64 14.92 21.56C15 21.53 15.08 21.5 15.16 21.48C15.38 21.4 15.61 21.33 15.82 21.24C15.9 21.21 15.98 21.17 16.06 21.13C16.27 21.04 16.48 20.94 16.69 20.83C16.77 20.79 16.84 20.74 16.91 20.7C17.11 20.58 17.31 20.47 17.51 20.34C17.58 20.3 17.64 20.25 17.71 20.2C17.91 20.06 18.1 19.92 18.28 19.77C18.34 19.72 18.39 19.67 18.45 19.63C18.56 19.54 18.67 19.45 18.77 19.36C18.77 19.35 18.77 19.35 18.76 19.34C20.75 17.51 22 14.9 22 12ZM16.94 16.97C14.23 15.15 9.79 15.15 7.06 16.97C6.62 17.26 6.26 17.6 5.96 17.97C4.44 16.43 3.5 14.32 3.5 12C3.5 7.31 7.31 3.5 12 3.5C16.69 3.5 20.5 7.31 20.5 12C20.5 14.32 19.56 16.43 18.04 17.97C17.75 17.6 17.38 17.26 16.94 16.97Z" fill="#C4D1EB"/>
+                            <path d="M12 6.92999C9.93 6.92999 8.25 8.60999 8.25 10.68C8.25 12.71 9.84 14.36 11.95 14.42C11.98 14.42 12.02 14.42 12.04 14.42C12.06 14.42 12.09 14.42 12.11 14.42C12.12 14.42 12.13 14.42 12.13 14.42C14.15 14.35 15.74 12.71 15.75 10.68C15.75 8.60999 14.07 6.92999 12 6.92999Z" fill="#C4D1EB"/>
+                        </svg>
+
+                        Кабинет
+                    </a>
+                </li>
+                    </ul>
+    </div>
+</nav>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-2 col-lg-2">
+                <img src="images/footer-logo.svg" alt="">
+            </div>
+            <div class="col-12 col-md-10 col-lg-10">
+                <p class="footer-text">Егер сізде қандай да бір сұрақтар болса, бізбен байланысыңыз:</p>
+                <div class="line-row">
+                    <a class="row-link" href="tel:87770643011">
+                        <img class="mr-1" src="images/icons/call-icon.svg" alt="">
+                        <span>+7 (777) 064-30-11</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     class="modal fade text-left">
+    <div role="document" class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header border-0">
+                    Вход
+                    <button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal"
+                            aria-label="Close">
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7.07104" width="10" height="2" rx="1" transform="rotate(-45 0 7.07104)"
+                                  fill="#fff"/>
+                            <rect x="1.41406" width="10" height="2" rx="1" transform="rotate(45 1.41406 0)"
+                                  fill="#fff"/>
+                        </svg>
+                    </button>
+                </div>
+                <form id="loginForm" action="https://amanat918.kz/ajax/login" method="GET" autocomplete="off">
+                    <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">                    <div class="form-group">
+                        <input type="tel" inputmode="numeric" class="form-control" id="login-phone"
+                               aria-describedby="error-login-phone" placeholder="Телефон" name="phone">
+                        <div id="error-login-phone" class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="login-password" name="password"
+                               aria-describedby="error-login-password" placeholder="Пароль">
+                        <div id="error-login-password" class="invalid-feedback"></div>
+                    </div>
+                    <button type="submit" class="btn btn-default btn-login">Войти на сайт</button>
+                </form>
+                <div class="modal-body-small-text">или</div>
+                <button type="button" onclick="openRegisterModal()"
+                        class="btn btn-default-outline btn-register">Регистрация
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="registerSecondModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     class="modal fade text-left">
+    <div role="document" class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header border-0">
+                    Регистрация
+                    <button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal"
+                            aria-label="Close">
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7.07104" width="10" height="2" rx="1" transform="rotate(-45 0 7.07104)"
+                                  fill="#fff"/>
+                            <rect x="1.41406" width="10" height="2" rx="1" transform="rotate(45 1.41406 0)"
+                                  fill="#fff"/>
+                        </svg>
+                    </button>
+                </div>
+                <form id="registerSecondForm" action="https://amanat918.kz/ajax/register" method="POST">
+                    <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">                    <div class="form-group">
+                        <input name="full_name" type="text" class="form-control"
+                               id="register-full_name" aria-describedby="error-register-full_name"
+                               placeholder="Ваше полное имя" required >
+                        <div id="error-register-full_name" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" inputmode="numeric" class="form-control phone" id="register-phone"
+                               aria-describedby="error-register-phone" placeholder="8" name="phone">
+                        <div id="error-register-phone" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="register-city_id" class="form-control" name="register-city">
+                            <option>Город</option>
+                                            <option value="1">Алматы</option>
+                                            <option value="2">Шымкент</option>
+                                            <option value="3">Астана</option>
+                                            <option value="4">Ақтөбе</option>
+                                            <option value="5">Қарағанды</option>
+                                            <option value="6">Тараз (Жамбыл)</option>
+                                            <option value="7">Павлодар</option>
+                                            <option value="8">Атырау</option>
+                                            <option value="9">Өскемен</option>
+                                            <option value="10">Семей</option>
+                                            <option value="11">Орал</option>
+                                            <option value="12">Қызылорда</option>
+                                            <option value="13">Қостанай</option>
+                                            <option value="14">Петропавл</option>
+                                            <option value="15">Ақтау</option>
+                                            <option value="16">Түркістан</option>
+                                            <option value="17">Көкшетау</option>
+                                            <option value="18">Жезқазған</option>
+                                            <option value="19">Талдықорған</option>
+                                            <option value="20">Жаңаөзен</option>
+                                            <option value="21">Қонаев (Қапшағай)</option>
+                                            <option value="22">Жаркент</option>
+                                            <option value="23">Балқаш</option>
+                                            <option value="24">Екібастұз</option>
+                                            <option value="25">Зайсан</option>
+                                            <option value="26">Сәтбаев</option>
+                                            <option value="29">Кеген</option>
+                                            <option value="30">Есік</option>
+                                            <option value="31">Шу</option>
+                                            <option value="32">Сарыөзек</option>
+                                            <option value="33">Жетісай</option>
+                                            <option value="34">Сарыағаш</option>
+                                                    </select>
+                        <div id="error-register-city_id" class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input name="password" type="password" class="form-control"
+                               id="register-password" aria-describedby="error-register-password"
+                               placeholder="Пароль" required>
+                        <div id="error-register-password" class="invalid-feedback"></div>
+                    </div>
+                    <button type="submit" class="btn btn-default btn-register">Регистрация</button>
+                </form>
+                <div class="modal-body-small-text">или</div>
+                <button type="button" onclick="openLoginModal()"
+                        class="btn btn-default-outline btn-register">Войти
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/mask.input.js"></script>
+<script src="plugins/sweetalert2/sweetalert2.js@v=1.1"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/lottie.js"></script>
+<script src="js/script.js@v=1.5"></script>
+
+    <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+    <script>
+        const players = Plyr.setup('#player', {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        });
+    </script>
+
+<script>
+    
+    
+    
+    
+    function alertErrorBuyAscCoedModal(text = "") {
+        Swal.fire({
+            title: text ? text : "Қате!",
+            padding: '2em',
+            icon: 'error',
+            iconHtml: '<div class="svgErrorContainer" id="svgErrorContainer"></div>',
+            customClass: {
+                icon: 'no-border'
+            },
+            showCloseButton: true,
+            showConfirmButton: true,
+            confirmButtonText: 'Тегін код аламын',
+        }).then((result) => {
+            if (result.value) {
+                
+                window.location.href = "https://api.whatsapp.com/send?phone=77770643011&Сәлеметсізбе! Тегін код алғым келеді";
+            }
+        })
+    }
+
+    let svgSuccessContainer = document.getElementById('svgSuccessContainer');
+    let animItemSuccess = bodymovin.loadAnimation({
+        wrapper: svgSuccessContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/success.json'
+    });
+
+    let svgErrorContainer = document.getElementById('svgErrorContainer');
+    let animItemError = bodymovin.loadAnimation({
+        wrapper: svgErrorContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/error.json'
+    });
+</script>
+
+<script src="livewire/livewire.js@id=de3fca26689cb5a39af4" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+</body>
+</html>
