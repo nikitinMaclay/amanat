@@ -28,6 +28,12 @@ def index_after_enter():
     return render_template('index_after_enter.html')
 
 
+@app.route("/address", methods=["GET", "POST"])
+def address():
+    print(1)
+    return render_template('address.html')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     pass
