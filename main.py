@@ -34,6 +34,18 @@ def address():
     return render_template('address.html')
 
 
+@app.route("/questions", methods=["GET", "POST"])
+def questions():
+    print(1)
+    return render_template('questions.html')
+
+
+@app.route("/parcels", methods=["GET", "POST"])
+def parcels():
+    print(1)
+    return render_template('parcels.html')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     pass
