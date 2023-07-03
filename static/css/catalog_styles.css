@@ -1,0 +1,150 @@
+.page__body {
+    margin: 0;
+}
+
+.no-margins {
+    margin: 0;
+}
+
+
+.page-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.main-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-between;
+    width: 300px;
+    font-family: Raleway-700;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+}
+
+.popular-goods-list {
+    width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    grid-row-gap: 40px;
+}
+
+.catalog__title {
+    font-family: "Cuprum",Arial,sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 30px;
+    color: #32425C;
+    margin: 29px 0 30px 28px;
+    padding: 40px;
+}
+
+.catalog__header {
+    background: #F2F6F8;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.popular-goods-item {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 1px solid #EAEAEA;
+}
+
+.text-aligning {
+    text-align: center;
+}
+
+.goods_more {
+    text-decoration: none;
+    color: brown;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.goods_more:hover {
+    opacity: 0.7;
+}
+
+.goods_more:active {
+    opacity: 0.5;
+}
+
+.page-footer {
+    background: #343434;
+    color: white;
+    padding: 25px 0;
+    margin-top: 40px;
+}
+
+.page-footer__contacts {
+    margin: 0 auto;
+    width: max-content;
+}
+
+.contacts__text {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 55px;
+}
+
+.contacts__phone {
+    text-decoration: none;
+    color: white;
+}
+
+.contacts__phone:hover {
+    opacity: 0.5;
+
+}
+
+.contacts__phone:active {
+    opacity: 0.3;
+
+}
+
+.goods-item-img {
+    margin: 0 auto;
+}
+
+.good-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 730px;
+    margin: 0 auto;
+}
+
+.good-card-cost {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.good-card-naming {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.good-card-description-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.good-card-description {
+    font-size: 23px;
+}
+
+.page-main__good-card {
+    margin-top: 65px;
+}
