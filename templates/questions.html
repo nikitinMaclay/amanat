@@ -1,88 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base.html' %}
+{% block title %}
+Вопросы
+{% endblock %}
 
-    <title>Сұрақ-жауап</title>
-
-    <!-- Csrf token -->
-    <meta name="csrf-token" content="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="../static/css/fonts.css@v=1.2.css"/>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../static/css/loader.css@v=1.1.css">
-    <link rel="stylesheet" href="../static/plugins/sweetalert2/sweetalert2.css@v=1.1.css">
-        <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css"/>
-    <link rel="stylesheet" href="../static/css/style.css@v=2.6.css"/>
-    <link rel="stylesheet" href="../static/css/pagination.css@v=1.4.css"/>
-    <link rel="stylesheet" href="../static/css/footer.css@v=1.3.css"/>
-    <link rel="stylesheet" href="../static/css/media.css@v=2.4.css"/>
-
-    <link rel="apple-touch-icon" href="images/favicon-mobile.jpg">
-    <link rel="icon" type="image" href="images/favicon-mobile.jpg">
-
-    <style >[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
-</head>
-
-<body class="wrap d-flex flex-column min-vh-100">
-
-<div class="overflow"></div>
-<div class="loader">
-    <div tabindex="0" aria-label="Loading" class="overlay is-active is-full-page" aria-busy="true">
-        <div class="vld-background"></div>
-        <div class="vld-icon">
-
-            <svg viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" width="64" height="64" stroke="#fff">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(1 1)" stroke-width="2">
-                        <circle stroke-opacity=".25" cx="18" cy="18" r="18"></circle>
-                        <path d="M36 18c0-9.94-8.06-18-18-18">
-                            <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18"
-                                              dur="0.8s" repeatCount="indefinite"></animateTransform>
-                        </path>
-                    </g>
-                </g>
-            </svg>
-        </div>
-    </div>
-</div>
-
-<div class="flex-fill">
-    <header class="header">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index">
-                <img class="navbar-brand-mobile" src="images/maksat-mobile-logo.png" alt="">
-            </a>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <div class="line-row">
-                        <a href="address" class="row-link">
-                            Склад адресі
-                        </a>
-                        <a href="questions" class="row-link">
-                            Сұрақ жауап
-                        </a>
-                    </div>
-                            </div>
-
-                            <div class="mobile-line-row">
-                    <a href="index.html" class="row-link">
-                        <img src="images/icons/user-icon.svg" alt="">
-                    </a>
-                </div>
-                    </nav>
-    </div>
-</header>
-
-    <div class="content-wrapper">
+{% block content %}
             <section class="section">
         <div class="container">
             
@@ -365,94 +286,10 @@
         </div>
     </div>
 </div>
-<div id="registerSecondModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-     class="modal fade text-left">
-    <div role="document" class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="modal-header border-0">
-                    Регистрация
-                    <button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal"
-                            aria-label="Close">
-                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect y="7.07104" width="10" height="2" rx="1" transform="rotate(-45 0 7.07104)"
-                                  fill="#fff"/>
-                            <rect x="1.41406" width="10" height="2" rx="1" transform="rotate(45 1.41406 0)"
-                                  fill="#fff"/>
-                        </svg>
-                    </button>
-                </div>
-                <form id="registerSecondForm" action="https://amanat918.kz/ajax/register" method="POST">
-                    <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">                    <div class="form-group">
-                        <input name="full_name" type="text" class="form-control"
-                               id="register-full_name" aria-describedby="error-register-full_name"
-                               placeholder="Ваше полное имя" required >
-                        <div id="error-register-full_name" class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="tel" inputmode="numeric" class="form-control phone" id="register-phone"
-                               aria-describedby="error-register-phone" placeholder="8" name="phone">
-                        <div id="error-register-phone" class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <select id="register-city_id" class="form-control" name="register-city">
-                            <option>Город</option>
-                                                            <option value="1">Алматы</option>
-                                                            <option value="2">Шымкент</option>
-                                                            <option value="3">Астана</option>
-                                                            <option value="4">Ақтөбе</option>
-                                                            <option value="5">Қарағанды</option>
-                                                            <option value="6">Тараз (Жамбыл)</option>
-                                                            <option value="7">Павлодар</option>
-                                                            <option value="8">Атырау</option>
-                                                            <option value="9">Өскемен</option>
-                                                            <option value="10">Семей</option>
-                                                            <option value="11">Орал</option>
-                                                            <option value="12">Қызылорда</option>
-                                                            <option value="13">Қостанай</option>
-                                                            <option value="14">Петропавл</option>
-                                                            <option value="15">Ақтау</option>
-                                                            <option value="16">Түркістан</option>
-                                                            <option value="17">Көкшетау</option>
-                                                            <option value="18">Жезқазған</option>
-                                                            <option value="19">Талдықорған</option>
-                                                            <option value="20">Жаңаөзен</option>
-                                                            <option value="21">Қонаев (Қапшағай)</option>
-                                                            <option value="22">Жаркент</option>
-                                                            <option value="23">Балқаш</option>
-                                                            <option value="24">Екібастұз</option>
-                                                            <option value="25">Зайсан</option>
-                                                            <option value="26">Сәтбаев</option>
-                                                            <option value="29">Кеген</option>
-                                                            <option value="30">Есік</option>
-                                                            <option value="31">Шу</option>
-                                                            <option value="32">Сарыөзек</option>
-                                                            <option value="33">Жетісай</option>
-                                                            <option value="34">Сарыағаш</option>
-                                                    </select>
-                        <div id="error-register-city_id" class="invalid-feedback"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <input name="password" type="password" class="form-control"
-                               id="register-password" aria-describedby="error-register-password"
-                               placeholder="Пароль" required>
-                        <div id="error-register-password" class="invalid-feedback"></div>
-                    </div>
-                    <button type="submit" class="btn btn-default btn-register">Регистрация</button>
-                </form>
-                <div class="modal-body-small-text">или</div>
-                <button type="button" onclick="openLoginModal()"
-                        class="btn btn-default-outline btn-register">Войти
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+{% endblock %}
 
 <!-- Scripts -->
+{% block scripts %}
 <script src="js/jquery.min.js"></script>
 <script src="js/mask.input.js"></script>
 <script src="plugins/sweetalert2/sweetalert2.js@v=1.1"></script>
@@ -511,5 +348,4 @@
 </script>
 
 <script src="livewire/livewire.js@id=de3fca26689cb5a39af4" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
-</body>
-</html>
+{% endblock %}
