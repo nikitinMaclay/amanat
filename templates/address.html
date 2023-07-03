@@ -194,7 +194,7 @@
                             <p class="text-address">
                                 广州市白云区石井街道庆槎路嘉忠物流中心P栋30档。加汗 13076763727
 
-                                <span class="address-copy ml-auto mt-3 mt-lg-0" onclick="myFunctionAddress()" title="Копировать">
+                                <span class="address-copy ml-auto mt-3 mt-lg-0" onclick="copyText('广州市白云区石井街道庆槎路嘉忠物流中心P栋30档。加汗 13076763727', '.address-copy')" title="Копировать">
                                         Көшіріп алу
                                         <svg id="address-copy-svg" width="24" height="24" class="ml-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M16 12.9V17.1C16 20.6 14.6 22 11.1 22H6.9C3.4 22 2 20.6 2 17.1V12.9C2 9.4 3.4 8 6.9 8H11.1C14.6 8 16 9.4 16 12.9Z" stroke="#0D5DFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -209,8 +209,8 @@
                     <div class="card card-cabinet">
                         <div class="card-body">
                             <p class="text-address">
-                                (87477722006)mikhail
-                                <span class="asc-code-copy ml-auto" onclick="myFunction()" title="Көшіріп алу">
+                                {{ asc_code }}
+                                <span class="asc-code-copy ml-auto" onclick="copyText('{{ asc_code }}', '.asc-code-copy')" title="Көшіріп алу">
                                         Көшіріп алу
                                         <svg width="24" height="24" class="ml-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M16 12.9V17.1C16 20.6 14.6 22 11.1 22H6.9C3.4 22 2 20.6 2 17.1V12.9C2 9.4 3.4 8 6.9 8H11.1C14.6 8 16 9.4 16 12.9Z" stroke="#0D5DFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -429,24 +429,11 @@
             controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
         });
 
-        function myFunction() {
-            let $tmp = $("<textarea>");
-            $("body").append($tmp);
-            $tmp.val('(87477722006)mikhail').select();
-            $('.asc-code-copy').addClass('asc-code-copy-success');
-            document.execCommand("copy");
-            $tmp.remove();
+        function copyText(text, baseClass) {
+            navigator.clipboard.writeText(text);
+            $(baseClass).addClass('copy-success');
         }
 
-        function myFunctionAddress() {
-            let $tmp = $("<textarea>");
-            $("body").append($tmp);
-            $tmp.val('广州市白云区石井街道庆槎路嘉忠物流中心P栋30档。加汗 13076763727').select();
-            // $('#address-copy-svg').addClass('address-copy-success');
-            $('.address-copy').addClass('address-copy-success');
-            document.execCommand("copy");
-            $tmp.remove();
-        }
     </script>
 
 <script>

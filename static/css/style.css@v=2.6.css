@@ -2606,11 +2606,11 @@ textarea.form-control {
 /*    stroke: var(--main-color);*/
 /*}*/
 
-.asc-code-copy.asc-code-copy-success {
+.asc-code-copy.copy-success {
     color: #46FF05;
 }
 
-.asc-code-copy.asc-code-copy-success path {
+.asc-code-copy.copy-success path {
     stroke: #46FF05;
 }
 
@@ -2618,11 +2618,11 @@ textarea.form-control {
 /*    stroke: var(--main-color);*/
 /*}*/
 
-.address-copy.address-copy-success {
+.address-copy.copy-success {
     color: #46FF05;
 }
 
-.address-copy.address-copy-success path {
+.address-copy.copy-success path {
     stroke: #46FF05;
 }
 
