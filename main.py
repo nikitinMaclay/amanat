@@ -25,25 +25,32 @@ def index():
 
 @app.route("/index_after_enter", methods=["GET", "POST"])
 def index_after_enter():
-    return render_template('index_after_enter.html')
+    return render_template('index_after_enter.html', login_name="get_login_name")
+
+
+@app.route("/catalog", methods=["GET", "POST"])
+def catalog():
+    return render_template('catalog.html', login_name="get_login_name")
+
+
+@app.route("/cabinet", methods=["GET", "POST"])
+def cabinet():
+    return render_template('cabinet.html', login_name="get_login_name")
 
 
 @app.route("/address", methods=["GET", "POST"])
 def address():
-    print(1)
-    return render_template('address.html')
+    return render_template('address.html', asc_code="asc_code adress func", login_name="get_login_name")
 
 
 @app.route("/questions", methods=["GET", "POST"])
 def questions():
-    print(1)
-    return render_template('questions.html')
+    return render_template('questions.html', login_name="get_login_name")
 
 
 @app.route("/parcels", methods=["GET", "POST"])
 def parcels():
-    print(1)
-    return render_template('parcels.html')
+    return render_template('parcels.html', login_name="get_login_name")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -58,7 +65,7 @@ def user_profile():
         pass
     else:
         abort(404)
-    return render_template('cabinet.html')
+    return render_template('cabinet.html', login_name="get_login_name")
 
 
 @login_manager.user_loader
