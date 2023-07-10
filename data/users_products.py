@@ -16,9 +16,7 @@ class UserProduct(SqlAlchemyBase, UserMixin, SerializerMixin):
     creator_id = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     product_name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     track_number = sqlalchemy.Column(sqlalchemy.String, nullable=False)
-    status_in_system = sqlalchemy.Column(sqlalchemy.Boolean, nullable=False, default=True)
-    status_china = sqlalchemy.Column(sqlalchemy.Boolean, nullable=False, default=False)
-    status_kaz = sqlalchemy.Column(sqlalchemy.Boolean, nullable=False, default=False)
-    status_completed = sqlalchemy.Column(sqlalchemy.Boolean, nullable=False, default=False)
-    status_archive = sqlalchemy.Column(sqlalchemy.Boolean, nullable=False, default=False)
+    status_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("status.status_id"), default=1)
+    status = relationship("Status")
+
 

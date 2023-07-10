@@ -42,35 +42,36 @@
                             </div>
                         </div>
                                                     <div class="card card-parcel">
-                                <div class="card-body">
-                                    <div class="card-status-body">
-                                        <div class="row">
-                                            <div class="mb-3 col-12 mb-md-3 col-md-6 col-lg-3 mb-lg-0">
-                                                <div class="card-text-title">
-                                                    <a href="https://amanat918.kz/parcels/parcel/3841">
-                                                        123
+                                {% for order in user_orders%}
+                                    <div class="card-body">
+                                        <div class="card-status-body">
+                                            <div class="row">
+                                                <div class="mb-3 col-12 mb-md-3 col-md-6 col-lg-3 mb-lg-0">
+                                                    <div class="card-text-title">
+                                                        <a href="#">
+                                                            {{order.product_name}}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 col-12 mb-md-3 col-md-6 col-lg-3 mb-lg-0">
+                                                    <div class="card-text-title">{{order.track_number}}</div>
+                                                </div>
+                                                <div class="mb-3 col-6 mb-md-4 col-md-6 col-lg-4 mb-lg-0">
+                                                    <div class="card-text-title">{{order.status.status_naming}}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                </div>
+                                                <div class="col-6 mb-md-2 col-md-6 col-lg-2 mb-lg-0">
+                                                    <a class="d-flex" href="https://amanat918.kz/parcels/parcel/3841">
+                                                        <svg class="ml-auto" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M14.4297 5.92999L20.4997 12L14.4297 18.07" stroke="#0D5DFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M3.5 12H20.33" stroke="#0D5DFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="mb-3 col-12 mb-md-3 col-md-6 col-lg-3 mb-lg-0">
-                                                <div class="card-text-title">zxc</div>
-                                            </div>
-                                            <div class="mb-3 col-6 mb-md-4 col-md-6 col-lg-4 mb-lg-0">
-                                                <div class="card-text-title">
-                                                                                                                                                                        Товар жүйеге тіркелді
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                            </div>
-                                            <div class="col-6 mb-md-2 col-md-6 col-lg-2 mb-lg-0">
-                                                <a class="d-flex" href="https://amanat918.kz/parcels/parcel/3841">
-                                                    <svg class="ml-auto" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M14.4297 5.92999L20.4997 12L14.4297 18.07" stroke="#0D5DFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                        <path d="M3.5 12H20.33" stroke="#0D5DFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                    </svg>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
 
                                                     <div class="row">

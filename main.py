@@ -6,12 +6,14 @@ from data import db_session
 from data.users import User
 from data.products import Product
 from data.users_products import UserProduct
+from data.status import Status
 
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 from forms.sign_up import RegistrationForm
 from forms.sign_in import LoginForm
 from forms.create_product import CreateProductForm
+
 
 
 app = Flask(__name__)
@@ -100,7 +102,11 @@ def questions():
 
 @app.route("/parcels", methods=["GET", "POST"])
 def parcels():
-    return render_template('parcels.html', login_name="get_login_name")
+    db_sess = db_session.create_session()
+
+    user_orders = db_sess.query(UserProduct).filter(UserProduct.creator_id == current_user.id,
+                                                    UserProduct.status_id != 5).all()
+    return render_template('parcels.html', login_name="get_login_name", user_orders=user_orders)
 
 
 @app.route("/parcels/create", methods=["GET", "POST"])
@@ -124,7 +130,11 @@ def parcels_create():
 
 @app.route("/parcels/archive", methods=["GET", "POST"])
 def parcels_archive():
-    return render_template('archive.html', login_name="get_login_name")
+    db_sess = db_session.create_session()
+
+    user_orders = db_sess.query(UserProduct).filter(UserProduct.creator_id == current_user.id,
+                                                    UserProduct.status_id == 5).all()
+    return render_template('archive.html', login_name="get_login_name", user_orders=user_orders)
 
 
 @app.route('/login', methods=['GET', 'POST'])
