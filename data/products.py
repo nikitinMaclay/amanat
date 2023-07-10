@@ -12,7 +12,7 @@ class Product(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'products'
 
     product_id = sqlalchemy.Column(sqlalchemy.Integer,
-                           primary_key=True, autoincrement=True)
+                                   primary_key=True, autoincrement=True)
     product_name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     product_description = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     product_picture_path = sqlalchemy.Column(sqlalchemy.String, nullable=False)

@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block title %}
+Карточка товара
+{% endblock %}
+
+{% block content %}
+  <section class="section">
+        <div class="container container-full">
+
+            <div class="row">
+                <div class="col-lg-12 col-full">
+                    <div class="section-header">
+                        <h3 class="section-header-title">Добавить трек номер</h3>
+                    </div>
+
+                    <div class="card card-cabinet">
+                            <div class="card-body">
+                                <form method="POST" class="cabinet-edit" action="">
+                                        {{ form.hidden_tag() }}
+                                        <div>
+                                            <p style="display: grid;
+                                                        grid-template-columns: 200px 1fr;">
+                                                {{ form.product_name.label(style="display: flex;
+    flex-direction: column;
+    justify-content: space-around;") }}
+                                                {{ form.product_name(style="height: 45px;
+    background: #FFFFFF;
+    border-radius: var(--border-radius);
+    border: 1px solid #C4C4C4;
+    font-family: Raleway-400;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #909090;
+    padding: 0 15px;
+    transition: 0.3s all;
+    caret-color: var(--main-color);") }}
+                                                {% for error in form.product_name.errors %}
+                                                    <div class="alert alert-danger" role="alert">
+                                                        {{ error }}
+                                                    </div>
+                                                {% endfor %}
+                                            </p>
+                                            <p style="display: grid;
+                                                        grid-template-columns: 200px 1fr;">
+                                            {{ form.track_number.label(style="display: flex;
+    flex-direction: column;
+    justify-content: space-around;") }}
+                                                {{ form.track_number(style="height: 45px;
+    background: #FFFFFF;
+    border-radius: var(--border-radius);
+    border: 1px solid #C4C4C4;
+    font-family: Raleway-400;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #909090;
+    padding: 0 15px;
+    transition: 0.3s all;
+    caret-color: var(--main-color);")}}
+                                                {% for error in form.track_number.errors %}
+                                                    <div class="alert alert-danger" role="alert">
+                                                        {{ error }}
+                                                    </div>
+                                                {% endfor %}
+                                            </p>
+                                        </div>
+                                    <p>{{ form.submit(type="submit", class="btn btn-primary", style="padding: 15px;
+    width: 200px;") }}</p>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+<!-- Scripts -->
+{% block scripts %}
+<script src="https://amanat918.kz/js/jquery.min.js"></script>
+<script src="https://amanat918.kz/js/mask.input.js"></script>
+<script src="https://amanat918.kz/plugins/sweetalert2/sweetalert2.js?v=1.1"></script>
+<script src="https://amanat918.kz/js/bootstrap.bundle.min.js"></script>
+<script src="https://amanat918.kz/js/lottie.js"></script>
+<script src="https://amanat918.kz/js/script.js?v=1.5"></script>
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+<script>
+        const players = Plyr.setup('#player', {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        });
+
+        function copyText(text, baseClass) {
+            navigator.clipboard.writeText(text);
+            $(baseClass).addClass('copy-success');
+        }
+
+    </script>
+<script>
+
+
+
+
+    function alertErrorBuyAscCoedModal(text = "") {
+        Swal.fire({
+            title: text ? text : "Қате!",
+            padding: '2em',
+            icon: 'error',
+            iconHtml: '<div class="svgErrorContainer" id="svgErrorContainer"></div>',
+            customClass: {
+                icon: 'no-border'
+            },
+            showCloseButton: true,
+            showConfirmButton: true,
+            confirmButtonText: 'Тегін код аламын',
+        }).then((result) => {
+            if (result.value) {
+
+                window.location.href = "https://api.whatsapp.com/send?phone=77770643011&Сәлеметсізбе! Тегін код алғым келеді";
+            }
+        })
+    }
+
+    let svgSuccessContainer = document.getElementById('svgSuccessContainer');
+    let animItemSuccess = bodymovin.loadAnimation({
+        wrapper: svgSuccessContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/success.json'
+    });
+
+    let svgErrorContainer = document.getElementById('svgErrorContainer');
+    let animItemError = bodymovin.loadAnimation({
+        wrapper: svgErrorContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/error.json'
+    });
+</script>
+
+<script src="/livewire/livewire.js?id=de3fca26689cb5a39af4" data-turbo-eval="false" data-turbolinks-eval="false"></script><script data-turbo-eval="false" data-turbolinks-eval="false">window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = '4AFmTrRWO8qVQpMbXP4ld3H97L02c33cKsV4lw2B';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+{% endblock %}

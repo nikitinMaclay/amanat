@@ -5,11 +5,13 @@ from flask import Flask, render_template, redirect, request, make_response, abor
 from data import db_session
 from data.users import User
 from data.products import Product
+from data.users_products import UserProduct
 
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 from forms.sign_up import RegistrationForm
 from forms.sign_in import LoginForm
+from forms.create_product import CreateProductForm
 
 
 app = Flask(__name__)
@@ -29,6 +31,7 @@ def index():
     form_regist = RegistrationForm()
     form_login = LoginForm()
     if form_regist.validate_on_submit():
+        print("login")
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.phone_number == form_regist.phone_num.data).first():
             return render_template('index.html', title='Регистрация',
@@ -42,6 +45,7 @@ def index():
         user.set_password(form_regist.password.data)
         db_sess.add(user)
         db_sess.commit()
+        login_user(user, remember=True)
         return redirect("/index_after_enter")
     if form_login.validate_on_submit():
         db_sess = db_session.create_session()
@@ -97,6 +101,30 @@ def questions():
 @app.route("/parcels", methods=["GET", "POST"])
 def parcels():
     return render_template('parcels.html', login_name="get_login_name")
+
+
+@app.route("/parcels/create", methods=["GET", "POST"])
+def parcels_create():
+    form = CreateProductForm()
+    if form.validate_on_submit():
+        db_sess = db_session.create_session()
+        user_product = UserProduct(
+        )
+        user_product.product_name = form.product_name.data
+        user_product.creator_id = current_user.id
+        user_product.track_number = form.track_number.data
+
+        db_sess.add(user_product)
+        db_sess.commit()
+
+        return redirect("/parcels")
+
+    return render_template('create_order.html', login_name="get_login_name", form=form)
+
+
+@app.route("/parcels/archive", methods=["GET", "POST"])
+def parcels_archive():
+    return render_template('archive.html', login_name="get_login_name")
 
 
 @app.route('/login', methods=['GET', 'POST'])
