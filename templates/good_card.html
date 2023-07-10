@@ -1,69 +1,85 @@
-<!DOCTYPE html>
-<html lang="ru" class="page">
+{% extends 'base.html' %}
+{% block title %}
+Карточка товара
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Аманат</title>
-    <link href="../static/css/catalog_styles.css" rel="stylesheet">
-</head>
-
-<body class="page__body">
-    <header class="page-header">
-        <a class="page-header__logo">
-            <img class="page-header__logo-image" src="../static/images/maksat-mobile-logo.jpg"
-                 width="250" height="50" alt="Аманат">
-        </a>
-        <nav class="main-nav">
-            <div class="main-nav__wrapper">
-                <ul class="main-nav__list site-list">
-                    <li class="site-list__item">
-                        <a>
-                            Адрес склада
-                        </a>
-                    </li>
-                    <li class="site-list__item">
-                        <a>
-                            Задать вопрос
-                        </a>
-                    </li>
-                </ul>
-                <div class="main-nav__list user-list">
-
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main class="page-main">
+{% block content %}
+                <main class="page-main">
         <section class="page-main__good-card">
             <div class="good-card">
                 <img src="../static/images/good_card.jpg" class="goods-item-img" width="300" height="300">
-                <h3 class='good-card-naming text-aligning no-margins'>Название: dasdsadsadas</h3>
-                <p class="good-card-cost text-aligning no-margins">Цена: 32500 Р.</p>
+                <h3 class='good-card-naming text-aligning no-margins'>Название: {{definite_product.product_name}}</h3>
                 <div class="description_wrapper">
                     <p class="good-card-description text-aligning no-margins"><b>Описание:</b>
-                        Товар создан специально для dasdsadasdasda asd asdas dsadha
-                        asdsada sdasd as asd asd asdas dasdrqw agrasd gfafsdfadfgfa f adsfasdg as ag adfgwrf df saDfa
-                        Товар создан специально для dasdsadasdasda asd asdas dsadha asdsada sdasd as asd asd asdas
-                        dasdrqw agrasd gfafsdfadfgfa f adsfasdg as ag adfgwrf df saDfa
-                        Товар создан специально для dasdsadasdasda asd asdas dsadha asdsada sdasd as asd asd asdas
-                        dasdrqw agrasd gfafsdfadfgfa f adsfasdg as ag adfgwrf df saDfa
+                        {{definite_product.product_description}}
                     </p>
                 </div>
             </div>
         </section>
     </main>
-    <footer class="page-footer">
-        <div class="page-footer__wrapper">
-            <div class="page-footer__contacts contacts">
-                <p class="contacts__text">
-                    Если у вас есть какие-либо вопросы, пожалуйста, свяжитесь с нами:<br>
-                    <a class="contacts__phone" href="tel:+78125556666">
-                        <span class="contacts__phone-mobile">Тел.:</span> +7 (812) 555-66-66
-                    </a>
-                </p>
-            </div>
-    </footer>
-</body>
+{% endblock %}
+
+<!-- Scripts -->
+{% block scripts %}
+<script src="https://amanat918.kz/js/jquery.min.js"></script>
+<script src="https://amanat918.kz/js/mask.input.js"></script>
+<script src="https://amanat918.kz/plugins/sweetalert2/sweetalert2.js?v=1.1"></script>
+<script src="https://amanat918.kz/js/bootstrap.bundle.min.js"></script>
+<script src="https://amanat918.kz/js/lottie.js"></script>
+<script src="https://amanat918.kz/js/script.js?v=1.5"></script>
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+<script>
+        const players = Plyr.setup('#player', {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        });
+
+        function copyText(text, baseClass) {
+            navigator.clipboard.writeText(text);
+            $(baseClass).addClass('copy-success');
+        }
+
+    </script>
+<script>
 
 
-</html>
+
+
+    function alertErrorBuyAscCoedModal(text = "") {
+        Swal.fire({
+            title: text ? text : "Қате!",
+            padding: '2em',
+            icon: 'error',
+            iconHtml: '<div class="svgErrorContainer" id="svgErrorContainer"></div>',
+            customClass: {
+                icon: 'no-border'
+            },
+            showCloseButton: true,
+            showConfirmButton: true,
+            confirmButtonText: 'Тегін код аламын',
+        }).then((result) => {
+            if (result.value) {
+
+                window.location.href = "https://api.whatsapp.com/send?phone=77770643011&Сәлеметсізбе! Тегін код алғым келеді";
+            }
+        })
+    }
+
+    let svgSuccessContainer = document.getElementById('svgSuccessContainer');
+    let animItemSuccess = bodymovin.loadAnimation({
+        wrapper: svgSuccessContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/success.json'
+    });
+
+    let svgErrorContainer = document.getElementById('svgErrorContainer');
+    let animItemError = bodymovin.loadAnimation({
+        wrapper: svgErrorContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/error.json'
+    });
+</script>
+
+<script src="/livewire/livewire.js?id=de3fca26689cb5a39af4" data-turbo-eval="false" data-turbolinks-eval="false"></script><script data-turbo-eval="false" data-turbolinks-eval="false">window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = '4AFmTrRWO8qVQpMbXP4ld3H97L02c33cKsV4lw2B';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+{% endblock %}

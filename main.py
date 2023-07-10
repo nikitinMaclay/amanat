@@ -4,6 +4,7 @@ from flask import Flask, render_template, redirect, request, make_response, abor
 
 from data import db_session
 from data.users import User
+from data.products import Product
 
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
@@ -63,7 +64,19 @@ def index_after_enter():
 
 @app.route("/catalog", methods=["GET", "POST"])
 def catalog():
-    return render_template('catalog.html', login_name="get_login_name")
+    if current_user.is_authenticated:
+        db_sess = db_session.create_session()
+        goods = db_sess.query(Product).all()
+        return render_template('catalog.html', goods=goods)
+
+
+@app.route("/product/<int:product_id>", methods=["GET", "POST"])
+def product(product_id):
+    db_sess = db_session.create_session()
+    definite_product = db_sess.query(Product).filter(Product.product_id == product_id).first()
+    print(definite_product)
+
+    return render_template('good_card.html', definite_product=definite_product)
 
 
 @app.route("/cabinet", methods=["GET", "POST"])

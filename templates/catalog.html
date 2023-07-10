@@ -13,56 +13,18 @@
                     </h2>
                 </header>
                 <ul class="popular-goods-list special-ul">
+                    {% for good in goods %}
                     <li class="popular-goods-item popular-goods-item-1">
-                        <a href="#" class="popular-goods-item-link">
-                        <img class="goods-item-img goods-item-img bosch-item-img bosch-item-1" src="../static/images/good_card.jpg"
+                        <a href="/product/{{good.product_id}}" class="popular-goods-item-link">
+                        <img class="goods-item-img goods-item-img bosch-item-img bosch-item-1"
+                             src="{{good.product_picture_path}}"
                              alt="картинка с дрелью 9000-модели" width="184" height="164">
-                        <h3 class='goods-naming text-aligning'>dasdsadsadas</h3>
-                        <p class="goods-cost text-aligning">32500 Р.</p>
-                        <p class="goods-description text-aligning">Товар создан специально для...</p>
+                        <h3 class='goods-naming text-aligning'>{{good.product_name}}</h3>
+                        <p class="goods-description text-aligning">{{good.product_description}}</p>
                         <a href="#" class="goods_more text-aligning">Подробнее</a>
                             </a>
                     </li>
-                    <li class="popular-goods-item popular-goods-item-1">
-                        <img src="../static/images/good_card.jpg" alt="картинка с дрелью 9000-модели" width="184" height="164"
-                            class="goods-item-img bosch-item-img bosch-item-1">
-                        <h3 class='goods-naming text-aligning'>dasdsadsadas</h3>
-                        <p class="goods-cost text-aligning">32500 Р.</p>
-                        <p class="goods-description text-aligning">Товар создан специально для...</p>
-                        <a href="#" class="goods_more text-aligning">Подробнее</a>
-                    </li>
-                    <li class="popular-goods-item popular-goods-item-1">
-                        <img src="../static/images/good_card.jpg" alt="картинка с дрелью 9000-модели" width="184" height="164"
-                            class="goods-item-img bosch-item-img bosch-item-1">
-                        <h3 class='goods-naming text-aligning'>dasdsadsadas</h3>
-                        <p class="goods-cost text-aligning">32500 Р.</p>
-                        <p class="goods-description text-aligning">Товар создан специально для...</p>
-                        <a href="#" class="goods_more text-aligning">Подробнее</a>
-                    </li>
-                    <li class="popular-goods-item popular-goods-item-1">
-                        <img src="../static/images/good_card.jpg" alt="картинка с дрелью 9000-модели" width="184" height="164"
-                            class="goods-item-img bosch-item-img bosch-item-1">
-                        <h3 class='goods-naming text-aligning'>dasdsadsadas</h3>
-                        <p class="goods-cost text-aligning">32500 Р.</p>
-                        <p class="goods-description text-aligning">Товар создан специально для...</p>
-                        <a href="#" class="goods_more text-aligning">Подробнее</a>
-                    </li>
-                    <li class="popular-goods-item popular-goods-item-1">
-                        <img src="../static/images/good_card.jpg" alt="картинка с дрелью 9000-модели" width="184" height="164"
-                            class="goods-item-img bosch-item-img bosch-item-1">
-                        <h3 class='goods-naming text-aligning'>dasdsadsadas</h3>
-                        <p class="goods-cost text-aligning">32500 Р.</p>
-                        <p class="goods-description text-aligning">Товар создан специально для...</p>
-                        <a href="#" class="goods_more text-aligning">Подробнее</a>
-                    </li>
-                    <li class="popular-goods-item popular-goods-item-1">
-                        <img src="../static/images/good_card.jpg" alt="картинка с дрелью 9000-модели" width="184" height="164"
-                            class="goods-item-img bosch-item-img bosch-item-1">
-                        <h3 class='goods-naming text-aligning'>dasdsadsadas</h3>
-                        <p class="goods-cost text-aligning">32500 Р.</p>
-                        <p class="goods-description text-aligning">Товар создан специально для...</p>
-                        <a href="#" class="goods_more text-aligning">Подробнее</a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
         </section>
