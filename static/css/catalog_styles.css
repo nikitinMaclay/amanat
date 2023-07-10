@@ -53,11 +53,16 @@
 }
 
 .popular-goods-item {
-    width: 200px;
+    width: 235px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    border: 1px solid #EAEAEA;
+    background: rgba(192, 192, 192, 0.2)
+}
+
+.popular-goods-item-link {
+    display: flex;
+    flex-direction: column;
 }
 
 .text-aligning {
@@ -116,6 +121,8 @@
 
 .goods-item-img {
     margin: 0 auto;
+    margin-top: 26px;
+    margin-bottom: 10px;
 }
 
 .good-card {
