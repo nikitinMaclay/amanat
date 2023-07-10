@@ -7,6 +7,9 @@ from data.users import User
 
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
+from forms.sign_up import RegistrationForm
+from forms.sign_in import LoginForm
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'amanat_copy'
@@ -20,7 +23,37 @@ login_manager.init_app(app)
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return redirect("/index_after_enter")
+    form_regist = RegistrationForm()
+    form_login = LoginForm()
+    if form_regist.validate_on_submit():
+        db_sess = db_session.create_session()
+        if db_sess.query(User).filter(User.phone_number == form_regist.phone_num.data).first():
+            return render_template('index.html', title='Регистрация',
+                                   form_regist=form_regist, form_login=form_login,
+                                   message="Такой пользователь уже есть", login="", regist="active show")
+        user = User(
+            phone_number=form_regist.phone_num.data,
+            name=form_regist.username.data,
+            user_city=form_regist.city.data,
+        )
+        user.set_password(form_regist.password.data)
+        db_sess.add(user)
+        db_sess.commit()
+        return redirect("/index_after_enter")
+    if form_login.validate_on_submit():
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.phone_number == form_login.phone_num.data).first()
+        if user and user.check_password(form_login.password.data):
+            login_user(user, remember=True)
+            return redirect("/index_after_enter")
+        return render_template('index.html',
+                               message_login="Неправильный логин или пароль",
+                               form_regist=form_regist, form_login=form_login, login="active show",
+                               message="", regist="")
+    return render_template('index.html', form_regist=form_regist,
+                           form_login=form_login, login="active show", message="", regist="", message_login="")
 
 
 @app.route("/index_after_enter", methods=["GET", "POST"])

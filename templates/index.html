@@ -170,146 +170,75 @@
                         <div class="auth-block">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home"
+                                    <button class="nav-link  {{login}}" id="home-tab" data-toggle="tab" data-target="#home"
                                             type="button" role="tab" aria-controls="home" aria-selected="true">
                                         Войти в кабинет
                                     </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile"
+                                    <button class="nav-link {{regist}}" id="profile-tab" data-toggle="tab" data-target="#profile"
                                             type="button" role="tab" aria-controls="profile" aria-selected="false">
                                          Регистрация
                                     </button>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                <div class="tab-pane fade {{login}}" id="home" role="tabpanel"
                                      aria-labelledby="home-tab">
-                                    <form id="loginForm1" class="login-form" action="index_after_enter"
-                                          method="GET" autocomplete="off">
-                                        <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">                                        <div class="form-group">
-                                            <input type="tel" inputmode="numeric" class="form-control phone"
-                                                   id="login-phone" autocomplete="phone"
-                                                   aria-describedby="error-login-phone" placeholder="8___________"
-                                                   name="phone">
-                                            <div id="error-login-phone" class="invalid-feedback"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="login-password"
-                                                   name="password"
-                                                   aria-describedby="error-login-password" placeholder="Пароль"
-                                                   autocomplete="password">
-                                            <div id="error-login-password" class="invalid-feedback"></div>
-                                        </div>
-                                        <button type="submit" class="btn btn-default btn-login">
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9.7334 12.1833L11.8667 10.05L9.7334 7.91667" stroke="white"
-                                                      stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
-                                                <path d="M3.3335 10.05H11.8085" stroke="white" stroke-width="1.5"
-                                                      stroke-miterlimit="10" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
-                                                <path
-                                                    d="M10 3.33333C13.6833 3.33333 16.6667 5.83333 16.6667 10C16.6667 14.1667 13.6833 16.6667 10 16.6667"
-                                                    stroke="white" stroke-width="1.5" stroke-miterlimit="10"
-                                                    stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-
-                                            Войти в кабинет
-                                        </button>
+                                    <form id="loginForm1" class="login-form" action=""
+                                          method="POST" autocomplete="off">
+                                        {{ form_login.hidden_tag() }}
+                                        <p>
+                                            {{ form_login.phone_num.label }}<br>
+                                            {{ form_login.phone_num(size=32) }}<br>
+                                            {% for error in form_login.phone_num.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>
+                                            {{ form_login.password.label }}<br>
+                                            {{ form_login.password(size=32) }}<br>
+                                            {% for error in form_login.password.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>{{ form_login.submit() }}</p>
+                                        <p style="color: red">{{message_login}}</p>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <form id="registerSecondForm1" class="login-form" autocomplete="off"
-                                          action="index_after_enter" method="POST">
-                                        <input type="hidden" name="_method" value="POST">                                        <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">
-                                        <div class="form-group">
-                                            <input type="tel" inputmode="numeric" class="form-control phone"
-                                                   id="register-phone" maxlength="100"
-                                                   aria-describedby="error-register-phone" placeholder="8___________"
-                                                   name="phone">
-                                            <div id="error-register-phone" class="invalid-feedback"></div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input name="full_name" type="text" class="form-control" maxlength="100"
-                                                   id="register-full_name" aria-describedby="error-register-full_name"
-                                                   placeholder="Имя на английском" pattern="^[A-Za-z0-9]+$">
-                                            <div id="error-register-full_name" class="invalid-feedback"></div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <select id="register-city_id" class="form-control" name="register-city"
-                                                    >
-                                                <option>Город</option>
-                                                                                                    <option value="1">Алматы</option>
-                                                                                                    <option value="2">Шымкент</option>
-                                                                                                    <option value="3">Астана</option>
-                                                                                                    <option value="4">Ақтөбе</option>
-                                                                                                    <option value="5">Қарағанды</option>
-                                                                                                    <option value="6">Тараз (Жамбыл)</option>
-                                                                                                    <option value="7">Павлодар</option>
-                                                                                                    <option value="8">Атырау</option>
-                                                                                                    <option value="9">Өскемен</option>
-                                                                                                    <option value="10">Семей</option>
-                                                                                                    <option value="11">Орал</option>
-                                                                                                    <option value="12">Қызылорда</option>
-                                                                                                    <option value="13">Қостанай</option>
-                                                                                                    <option value="14">Петропавл</option>
-                                                                                                    <option value="15">Ақтау</option>
-                                                                                                    <option value="16">Түркістан</option>
-                                                                                                    <option value="17">Көкшетау</option>
-                                                                                                    <option value="18">Жезқазған</option>
-                                                                                                    <option value="19">Талдықорған</option>
-                                                                                                    <option value="20">Жаңаөзен</option>
-                                                                                                    <option value="21">Қонаев (Қапшағай)</option>
-                                                                                                    <option value="22">Жаркент</option>
-                                                                                                    <option value="23">Балқаш</option>
-                                                                                                    <option value="24">Екібастұз</option>
-                                                                                                    <option value="25">Зайсан</option>
-                                                                                                    <option value="26">Сәтбаев</option>
-                                                                                                    <option value="29">Кеген</option>
-                                                                                                    <option value="30">Есік</option>
-                                                                                                    <option value="31">Шу</option>
-                                                                                                    <option value="32">Сарыөзек</option>
-                                                                                                    <option value="33">Жетісай</option>
-                                                                                                    <option value="34">Сарыағаш</option>
-                                                                                            </select>
-                                            <div id="error-register-city_id" class="invalid-feedback"></div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input name="password" type="password" class="form-control"
-                                                   id="register-password" aria-describedby="error-register-password"
-                                                   placeholder="Пароль" >
-                                            <div id="error-register-password" class="invalid-feedback"></div>
-                                        </div>
-                                        <button type="submit" class="btn btn-default btn-register">
-                                            <svg class="mr-1" width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M10.5002 10C12.8013 10 14.6668 8.13454 14.6668 5.83335C14.6668 3.53217 12.8013 1.66669 10.5002 1.66669C8.19898 1.66669 6.3335 3.53217 6.3335 5.83335C6.3335 8.13454 8.19898 10 10.5002 10Z"
-                                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                                <path
-                                                    d="M3.3418 18.3333C3.3418 15.1083 6.55013 12.5 10.5001 12.5C11.3001 12.5 12.0751 12.6083 12.8001 12.8083"
-                                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round"/>
-                                                <path
-                                                    d="M18.8332 15C18.8332 15.2667 18.7998 15.525 18.7332 15.775C18.6582 16.1083 18.5248 16.4334 18.3498 16.7167C17.7748 17.6834 16.7165 18.3334 15.4998 18.3334C14.6415 18.3334 13.8665 18.0083 13.2832 17.475C13.0332 17.2583 12.8165 17 12.6498 16.7167C12.3415 16.2167 12.1665 15.625 12.1665 15C12.1665 14.1 12.5248 13.275 13.1082 12.675C13.7165 12.05 14.5665 11.6667 15.4998 11.6667C16.4832 11.6667 17.3748 12.0917 17.9748 12.775C18.5082 13.3667 18.8332 14.15 18.8332 15Z"
-                                                    stroke="white" stroke-width="1.5" stroke-miterlimit="10"
-                                                    stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M16.7416 14.9833H14.2583" stroke="white" stroke-width="1.5"
-                                                      stroke-miterlimit="10" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
-                                                <path d="M15.5 13.7667V16.2583" stroke="white" stroke-width="1.5"
-                                                      stroke-miterlimit="10" stroke-linecap="round"
-                                                      stroke-linejoin="round"/>
-                                            </svg>
-
-                                            Зарегистрироваться
-                                        </button>
+                                <div class="tab-pane fade {{regist}}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <form id="registerSecondForm1" class="login-form" autocomplete="off" method="POST">
+                                        {{ form_regist.hidden_tag() }}
+                                        <p>
+                                            {{ form_regist.phone_num.label }}<br>
+                                            {{ form_regist.phone_num(size=32) }}<br>
+                                            {% for error in form_regist.phone_num.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>
+                                            {{ form_regist.username.label }}<br>
+                                            {{ form_regist.username(size=32) }}<br>
+                                            {% for error in form_regist.username.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>
+                                            {{ form_regist.city.label }}<br>
+                                            {{ form_regist.city(size=32) }}<br>
+                                            {% for error in form_regist.city.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>
+                                            {{ form_regist.password.label }}<br>
+                                            {{ form_regist.password(size=32) }}<br>
+                                            {% for error in form_regist.password.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                            {% endfor %}
+                                        </p>
+                                        <p>{{ form_regist.submit() }}</p>
+                                        <p style="color: red">{{message}}</p>
                                     </form>
                                 </div>
                             </div>
@@ -470,7 +399,7 @@
                         </svg>
                     </button>
                 </div>
-                <form id="loginForm1" action="index_after_enter" method="GET" autocomplete="off">
+                <form id="loginForm1" action="index_after_enter " method="GET" autocomplete="off">
                     <input type="hidden" name="_token" value="GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn">                    <div class="form-group">
                         <input type="tel" inputmode="numeric" class="form-control" id="login-phone"
                                aria-describedby="error-login-phone" placeholder="Телефон" name="phone">
