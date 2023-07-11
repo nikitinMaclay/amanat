@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block title %}
+Каталог
+{% endblock %}
+
+{% block content %}
+<main style="width: 1000px; margin: 50px auto; text-align: center;">
+    <h3 style="text-align: center;
+    font-size: 45px;
+    margin-bottom: 60px;">Добавление товара</h3>
+    <form method="POST" action="" enctype="multipart/form-data" style="    width: 500px;
+    margin: 0 auto;">
+      <p style="    font-family: Raleway-700;
+    font-style: normal;
+    font-size: 20px;
+    width: 470px;
+    text-align: initial;">Добавьте название:</p>
+      <p>{{add_product_form.product_name(style="width: 470px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid darkgray;")}}</p>
+            <p style="font-family: Raleway-700;
+    font-style: normal;
+    font-size: 20px;
+    width: 470px;
+    text-align: initial;
+}">
+              Добавьте описание:</p>
+       <p>{{add_product_form.product_description(style="width: 470px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid darkgray;")}}</p>
+      <p style="    font-family: Raleway-700;
+    font-style: normal;
+    font-size: 20px;
+    width: 470px;
+    text-align: initial;">Добавьте картинку товара:</p>
+
+       <p>{{add_product_form.product_img(style="width: 470px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    margin-left: -16px;")}}</p>
+        <p>{{ add_product_form.submit(type="submit", class="btn btn-primary", style="padding: 11px;
+    width: 500px;") }}</p>
+    </form>
+  </main>
+{% endblock %}
+
+<!-- Scripts -->
+{% block scripts %}
+<script src="https://amanat918.kz/js/jquery.min.js"></script>
+<script src="https://amanat918.kz/js/mask.input.js"></script>
+<script src="https://amanat918.kz/plugins/sweetalert2/sweetalert2.js?v=1.1"></script>
+<script src="https://amanat918.kz/js/bootstrap.bundle.min.js"></script>
+<script src="https://amanat918.kz/js/lottie.js"></script>
+<script src="https://amanat918.kz/js/script.js?v=1.5"></script>
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+<script>
+        const players = Plyr.setup('#player', {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        });
+
+        function copyText(text, baseClass) {
+            navigator.clipboard.writeText(text);
+            $(baseClass).addClass('copy-success');
+        }
+
+    </script>
+<script>
+
+
+
+
+    function alertErrorBuyAscCoedModal(text = "") {
+        Swal.fire({
+            title: text ? text : "Қате!",
+            padding: '2em',
+            icon: 'error',
+            iconHtml: '<div class="svgErrorContainer" id="svgErrorContainer"></div>',
+            customClass: {
+                icon: 'no-border'
+            },
+            showCloseButton: true,
+            showConfirmButton: true,
+            confirmButtonText: 'Тегін код аламын',
+        }).then((result) => {
+            if (result.value) {
+
+                window.location.href = "https://api.whatsapp.com/send?phone=77770643011&Сәлеметсізбе! Тегін код алғым келеді";
+            }
+        })
+    }
+
+    let svgSuccessContainer = document.getElementById('svgSuccessContainer');
+    let animItemSuccess = bodymovin.loadAnimation({
+        wrapper: svgSuccessContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/success.json'
+    });
+
+    let svgErrorContainer = document.getElementById('svgErrorContainer');
+    let animItemError = bodymovin.loadAnimation({
+        wrapper: svgErrorContainer,
+        animType: 'svg',
+        loop: true,
+        path: '/js/error.json'
+    });
+</script>
+
+<script src="/livewire/livewire.js?id=de3fca26689cb5a39af4" data-turbo-eval="false" data-turbolinks-eval="false"></script><script data-turbo-eval="false" data-turbolinks-eval="false">window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = '4AFmTrRWO8qVQpMbXP4ld3H97L02c33cKsV4lw2B';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+{% endblock %}

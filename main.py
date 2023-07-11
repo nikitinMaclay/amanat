@@ -1,4 +1,8 @@
 import datetime
+import os
+import traceback
+
+from werkzeug.utils import secure_filename
 
 from flask import Flask, render_template, redirect, request, make_response, abort, jsonify
 
@@ -13,14 +17,19 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from forms.sign_up import RegistrationForm
 from forms.sign_in import LoginForm
 from forms.create_product import CreateProductForm
-
+from forms.add_product import AddProductForm
 
 
 app = Flask(__name__)
+
+upload_folder = "./static/images/uploads/"
+app.config['UPLOAD'] = upload_folder
+
 app.config['SECRET_KEY'] = 'amanat_copy'
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(
     days=365
 )
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png']
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -72,7 +81,7 @@ def index_after_enter():
 def catalog():
     if current_user.is_authenticated:
         db_sess = db_session.create_session()
-        goods = db_sess.query(Product).all()
+        goods = reversed(db_sess.query(Product).all())
         return render_template('catalog.html', goods=goods)
 
 
@@ -142,10 +151,37 @@ def login():
     pass
 
 
+@app.route('/add_product', methods=["GET", "POST"])
+@login_required
+def add_product():
+    add_product_form = AddProductForm()
+    if add_product_form.product_name.data is not None and add_product_form.product_description.data is not None \
+            and add_product_form.product_img.data is not None:
+        try:
+            db_sess = db_session.create_session()
+            user_product = Product()
+            user_product.product_name = add_product_form.product_name.data
+            user_product.product_description = add_product_form.product_description.data
+
+            file = request.files['product_img']
+            print(file)
+            filename = secure_filename(file.filename)
+            file.save(f"{app.config['UPLOAD']}{filename}")
+            user_product.product_picture_path = os.path.join("." + app.config['UPLOAD'], filename)
+            db_sess.add(user_product)
+            db_sess.commit()
+            print(3)
+            return redirect("/catalog")
+        except Exception as e:
+            print(traceback.format_tb(e))
+    if add_product_form.validate_on_submit():
+        return redirect("/index")
+    return render_template("/add_product.html", add_product_form=add_product_form)
+
+
 @app.route('/delete_product/<int:product_id>', methods=["POST"])
 @login_required
 def delete_product(product_id):
-    print(1)
     db_sess = db_session.create_session()
     products = db_sess.query(Product).filter(Product.product_id == product_id).first()
     db_sess.delete(products)
@@ -176,19 +212,17 @@ def logout():
     logout_user()
     return redirect("/")
 
-
-
-
-
+"""
 @app.errorhandler(400)
 def bad_request(_):
     return make_response(jsonify({'error': 'Bad Request'}), 400)
+"""
 
 
 def main():
     db_session.global_init("databases/amanat.db")
 
-    app.run()
+    app.run(debug=True, port=8001)
 
 
 if __name__ == '__main__':
