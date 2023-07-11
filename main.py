@@ -65,7 +65,7 @@ def index():
 
 @app.route("/index_after_enter", methods=["GET", "POST"])
 def index_after_enter():
-    return render_template('index_after_enter.html', login_name="get_login_name")
+    return render_template('index_after_enter.html')
 
 
 @app.route("/catalog", methods=["GET", "POST"])
@@ -74,82 +74,99 @@ def catalog():
         db_sess = db_session.create_session()
         goods = db_sess.query(Product).all()
         return render_template('catalog.html', goods=goods)
+    else:
+        return redirect("/")
 
 
 @app.route("/product/<int:product_id>", methods=["GET", "POST"])
 def product(product_id):
-    db_sess = db_session.create_session()
-    definite_product = db_sess.query(Product).filter(Product.product_id == product_id).first()
-    print(definite_product)
+    if current_user.is_authenticated:
+        db_sess = db_session.create_session()
+        definite_product = db_sess.query(Product).filter(Product.product_id == product_id).first()
+        print(definite_product)
 
-    return render_template('good_card.html', definite_product=definite_product)
+        return render_template('good_card.html', definite_product=definite_product)
+    else:
+        return redirect("/")
 
 
 @app.route("/cabinet", methods=["GET", "POST"])
 def cabinet():
-    return render_template('cabinet.html', login_name="get_login_name")
+    if current_user.is_authenticated:
+        return render_template('cabinet.html')
+    else:
+        return redirect("/")
 
 
 @app.route("/address", methods=["GET", "POST"])
 def address():
-    return render_template('address.html', asc_code="asc_code adress func", login_name="get_login_name")
+    if current_user.is_authenticated:
+        return render_template('address.html', asc_code=f"({current_user.phone_number}){current_user.name}")
+    else:
+        return redirect("/")
 
 
 @app.route("/questions", methods=["GET", "POST"])
 def questions():
-    return render_template('questions.html', login_name="get_login_name")
+    return render_template('questions.html')
 
 
 @app.route("/parcels", methods=["GET", "POST"])
 def parcels():
-    db_sess = db_session.create_session()
-
-    user_orders = db_sess.query(UserProduct).filter(UserProduct.creator_id == current_user.id,
-                                                    UserProduct.status_id != 5).all()
-    return render_template('parcels.html', login_name="get_login_name", user_orders=user_orders)
+    if current_user.is_authenticated:
+        db_sess = db_session.create_session()
+        user_orders = db_sess.query(UserProduct).filter(UserProduct.creator_id == current_user.id,
+                                                        UserProduct.status_id != 5).all()
+        return render_template('parcels.html', user_orders=user_orders)
+    else:
+        return redirect("/")
 
 
 @app.route("/parcels/create", methods=["GET", "POST"])
 def parcels_create():
-    form = CreateProductForm()
-    if form.validate_on_submit():
-        db_sess = db_session.create_session()
-        user_product = UserProduct(
-        )
-        user_product.product_name = form.product_name.data
-        user_product.creator_id = current_user.id
-        user_product.track_number = form.track_number.data
+    if current_user.is_authenticated:
+        form = CreateProductForm()
+        if form.validate_on_submit():
+            db_sess = db_session.create_session()
+            user_product = UserProduct(
+            )
+            user_product.product_name = form.product_name.data
+            user_product.creator_id = current_user.id
+            user_product.track_number = form.track_number.data
 
-        db_sess.add(user_product)
-        db_sess.commit()
+            db_sess.add(user_product)
+            db_sess.commit()
 
-        return redirect("/parcels")
+            return redirect("/parcels")
 
-    return render_template('create_order.html', login_name="get_login_name", form=form)
+        return render_template('create_order.html', form=form)
+    else:
+        return redirect("/")
 
 
 @app.route("/parcels/archive", methods=["GET", "POST"])
 def parcels_archive():
-    db_sess = db_session.create_session()
+    if current_user.is_authenticated:
+        db_sess = db_session.create_session()
 
-    user_orders = db_sess.query(UserProduct).filter(UserProduct.creator_id == current_user.id,
-                                                    UserProduct.status_id == 5).all()
-    return render_template('archive.html', login_name="get_login_name", user_orders=user_orders)
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    pass
+        user_orders = db_sess.query(UserProduct).filter(UserProduct.creator_id == current_user.id,
+                                                        UserProduct.status_id == 5).all()
+        return render_template('archive.html', user_orders=user_orders)
+    else:
+        return redirect("/")
 
 
 @app.route('/user_profile', methods=["GET", "POST"])
 @login_required
 def user_profile():
-    if request.method == "GET":
-        pass
+    if current_user.is_authenticated:
+        if request.method == "GET":
+            pass
+        else:
+            abort(404)
+        return render_template('cabinet.html')
     else:
-        abort(404)
-    return render_template('cabinet.html', login_name="get_login_name")
+        return redirect("/")
 
 
 @login_manager.user_loader
