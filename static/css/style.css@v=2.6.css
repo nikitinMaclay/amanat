@@ -621,7 +621,7 @@ a:hover {
     margin-right: 10px;
     position: absolute;
     z-index: 2;
-    top: 28px;
+    top: 15px;
     left: 20px;
 }
 
@@ -664,7 +664,7 @@ a:hover {
 .stepper-line {
     background: #0BD61F;
     width: 2px;
-    height: 67px;
+    height: 51px;
 }
 
 .stepper-line.not-active {

@@ -18,6 +18,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     phone_number = sqlalchemy.Column(sqlalchemy.String, index=True, unique=True, nullable=True)
     password = sqlalchemy.Column(sqlalchemy.String)
     user_city = sqlalchemy.Column(sqlalchemy.String)
+    user_products_relation = relationship("UserProduct")
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

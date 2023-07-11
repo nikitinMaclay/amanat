@@ -13,10 +13,12 @@ class UserProduct(SqlAlchemyBase, UserMixin, SerializerMixin):
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
-    creator_id = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    creator_id = sqlalchemy.Column(sqlalchemy.String, sqlalchemy.ForeignKey("users.id"), nullable=False)
     product_name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     track_number = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     status_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("status.status_id"), default=1)
     status = relationship("Status")
+    user = relationship("User")
+
 
 

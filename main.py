@@ -33,7 +33,6 @@ def index():
     form_regist = RegistrationForm()
     form_login = LoginForm()
     if form_regist.validate_on_submit():
-        print("login")
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.phone_number == form_regist.phone_num.data).first():
             return render_template('index.html', title='Регистрация',
@@ -83,7 +82,6 @@ def product(product_id):
     if current_user.is_authenticated:
         db_sess = db_session.create_session()
         definite_product = db_sess.query(Product).filter(Product.product_id == product_id).first()
-        print(definite_product)
 
         return render_template('good_card.html', definite_product=definite_product)
     else:
@@ -155,6 +153,16 @@ def parcels_archive():
     else:
         return redirect("/")
 
+
+@app.route("/parcels/<int:parcel_id>", methods=["GET", "POST"])
+def parcels_track(parcel_id):
+    if current_user.is_authenticated:
+        db_sess = db_session.create_session()
+        track_info = db_sess.query(UserProduct).filter(UserProduct.id == parcel_id).first()
+
+        return render_template('parcel_track_template.html', track_info=track_info, track_status=track_info.status_id)
+    else:
+        return redirect("/")
 
 @app.route('/user_profile', methods=["GET", "POST"])
 @login_required
