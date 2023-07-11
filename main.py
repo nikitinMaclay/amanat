@@ -253,6 +253,19 @@ def user_profile():
         return redirect("/")
 
 
+@app.route('/cabinet/edit', methods=["GET", "POST"])
+@login_required
+def user_profile_edit():
+    if current_user.is_authenticated and request.method == "GET":
+        return render_template("edit_profile.html")
+    elif request.method == "POST":
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.id == current_user.id).first()
+        user.name = request.form["full_name"]
+        db_sess.commit()
+        return redirect("/cabinet")
+
+
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
