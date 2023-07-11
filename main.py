@@ -18,6 +18,7 @@ from forms.sign_up import RegistrationForm
 from forms.sign_in import LoginForm
 from forms.create_product import CreateProductForm
 from forms.add_product import AddProductForm
+from forms.search import SearchingForm
 
 
 app = Flask(__name__)
@@ -38,7 +39,10 @@ login_manager.init_app(app)
 @app.route("/index", methods=["GET", "POST"])
 def index():
     if current_user.is_authenticated:
-        return redirect("/index_after_enter")
+        if current_user.phone_number != "admin":
+            return redirect("/catalog")
+        else:
+            return redirect("/index_after_enter")
     form_regist = RegistrationForm()
     form_login = LoginForm()
     if form_regist.validate_on_submit():
@@ -56,13 +60,19 @@ def index():
         db_sess.add(user)
         db_sess.commit()
         login_user(user, remember=True)
-        return redirect("/index_after_enter")
+        if current_user.phone_number != "admin":
+            return redirect("/catalog")
+        else:
+            return redirect("/index_after_enter")
     if form_login.validate_on_submit():
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.phone_number == form_login.phone_num.data).first()
         if user and user.check_password(form_login.password.data):
             login_user(user, remember=True)
-            return redirect("/index_after_enter")
+            if current_user.phone_number != "admin":
+                return redirect("/catalog")
+            else:
+                return redirect("/index_after_enter")
         return render_template('index.html',
                                message_login="Неправильный логин или пароль",
                                form_regist=form_regist, form_login=form_login, login="active show",
@@ -73,7 +83,15 @@ def index():
 
 @app.route("/index_after_enter", methods=["GET", "POST"])
 def index_after_enter():
-    return render_template('index_after_enter.html')
+    search_form = SearchingForm()
+    return render_template('index_after_enter.html', search_form=search_form)
+
+
+@app.route("/search", methods=["POST"])
+def search():
+    search_form = SearchingForm()
+    track_number = search_form.search_field.data
+    return redirect(f"/parcels/{track_number}")
 
 
 @app.route("/catalog", methods=["GET", "POST"])
@@ -163,15 +181,16 @@ def parcels_archive():
         return redirect("/")
 
 
-@app.route("/parcels/<int:parcel_id>", methods=["GET", "POST"])
-def parcels_track(parcel_id):
+@app.route("/parcels/<int:track_number>", methods=["GET", "POST"])
+def parcels_track(track_number):
     if current_user.is_authenticated:
         db_sess = db_session.create_session()
-        track_info = db_sess.query(UserProduct).filter(UserProduct.id == parcel_id).first()
+        track_info = db_sess.query(UserProduct).filter(UserProduct.track_number == track_number).first()
 
         return render_template('parcel_track_template.html', track_info=track_info, track_status=track_info.status_id)
     else:
         return redirect("/")
+
 
 @app.route('/add_product', methods=["GET", "POST"])
 @login_required
@@ -210,6 +229,15 @@ def delete_product(product_id):
     db_sess.commit()
 
     return redirect("/catalog")
+
+
+@app.route('/confirm/<int:track_number>/<int:status>', methods=["POST"])
+def confirm(track_number, status):
+    db_sess = db_session.create_session()
+    user_product = db_sess.query(UserProduct).filter(UserProduct.track_number == track_number).first()
+    user_product.status_id = status
+    db_sess.commit()
+    return redirect(f"/parcels/{track_number}")
 
 
 @app.route('/user_profile', methods=["GET", "POST"])
