@@ -181,7 +181,7 @@ def parcels_archive():
         return redirect("/")
 
 
-@app.route("/parcels/<int:track_number>", methods=["GET", "POST"])
+@app.route("/parcels/<track_number>", methods=["GET", "POST"])
 def parcels_track(track_number):
     if current_user.is_authenticated:
         db_sess = db_session.create_session()
@@ -231,7 +231,7 @@ def delete_product(product_id):
     return redirect("/catalog")
 
 
-@app.route('/confirm/<int:track_number>/<int:status>', methods=["POST"])
+@app.route('/confirm/<track_number>/<int:status>', methods=["POST"])
 def confirm(track_number, status):
     db_sess = db_session.create_session()
     user_product = db_sess.query(UserProduct).filter(UserProduct.track_number == track_number).first()
