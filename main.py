@@ -142,6 +142,18 @@ def login():
     pass
 
 
+@app.route('/delete_product/<int:product_id>', methods=["POST"])
+@login_required
+def delete_product(product_id):
+    print(1)
+    db_sess = db_session.create_session()
+    products = db_sess.query(Product).filter(Product.product_id == product_id).first()
+    db_sess.delete(products)
+    db_sess.commit()
+
+    return redirect("/catalog")
+
+
 @app.route('/user_profile', methods=["GET", "POST"])
 @login_required
 def user_profile():
@@ -163,6 +175,9 @@ def load_user(user_id):
 def logout():
     logout_user()
     return redirect("/")
+
+
+
 
 
 @app.errorhandler(400)

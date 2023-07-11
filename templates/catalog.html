@@ -11,6 +11,13 @@
                     <h2 class="catalog__title">
                         Каталог
                     </h2>
+                    <a href="/add_product" class="btn btn-default btn-edit btn-archive" style="background: blue;
+    color: white;
+    margin-top: -25px;
+    margin-left: 96px;
+    margin-bottom: 45px;">
+                                Добавить товар
+                            </a>
                 </header>
                 <ul class="popular-goods-list special-ul">
                     {% for good in goods %}
@@ -21,8 +28,12 @@
                              alt="картинка с дрелью 9000-модели" width="184" height="164">
                         <h3 class='goods-naming text-aligning'>{{good.product_name}}</h3>
                         <p class="goods-description text-aligning">{{good.product_description}}</p>
-                        <a href="#" class="goods_more text-aligning">Подробнее</a>
-                            </a>
+                        {% if current_user.name == 'admin' %}
+                        <form action="/delete_product/{{good.product_id}}" method="POST">
+                            <button class="goods_more text-aligning">Удалить</button>
+                        </form>
+                            {% endif %}
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>
