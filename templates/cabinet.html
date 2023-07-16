@@ -49,28 +49,32 @@
     </section>
 {% endblock %}
 
+
 <!-- Scripts -->
 {% block scripts %}
-<script src="js/jquery.min.js"></script>
-<script src="js/mask.input.js"></script>
-<script src="plugins/sweetalert2/sweetalert2.js@v=1.1"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/lottie.js"></script>
-<script src="js/script.js@v=1.5"></script>
-
-    <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
-    <script>
+<script src="https://amanat918.kz/js/jquery.min.js"></script>
+<script src="https://amanat918.kz/js/mask.input.js"></script>
+<script src="https://amanat918.kz/plugins/sweetalert2/sweetalert2.js?v=1.1"></script>
+<script src="https://amanat918.kz/js/bootstrap.bundle.min.js"></script>
+<script src="https://amanat918.kz/js/lottie.js"></script>
+<script src="https://amanat918.kz/js/script.js?v=1.5"></script>
+<script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+<script>
         const players = Plyr.setup('#player', {
             controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
         });
-    </script>
 
+        function copyText(text, baseClass) {
+            navigator.clipboard.writeText(text);
+            $(baseClass).addClass('copy-success');
+        }
+
+    </script>
 <script>
-    
-        alertErrorModal("Сіз тіркелмгенсіз!")
-    
-    
-    
+
+
+
+
     function alertErrorBuyAscCoedModal(text = "") {
         Swal.fire({
             title: text ? text : "Қате!",
@@ -85,7 +89,7 @@
             confirmButtonText: 'Тегін код аламын',
         }).then((result) => {
             if (result.value) {
-                
+
                 window.location.href = "https://api.whatsapp.com/send?phone=77770643011&Сәлеметсізбе! Тегін код алғым келеді";
             }
         })
@@ -108,5 +112,5 @@
     });
 </script>
 
-<script src="livewire/livewire.js@id=de3fca26689cb5a39af4" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'GloJd6ljmdTeTDJj5a31zfhcNv7OxsHeY5MWwFJn';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+<script src="/livewire/livewire.js?id=de3fca26689cb5a39af4" data-turbo-eval="false" data-turbolinks-eval="false"></script><script data-turbo-eval="false" data-turbolinks-eval="false">window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = '4AFmTrRWO8qVQpMbXP4ld3H97L02c33cKsV4lw2B';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
 {% endblock %}
